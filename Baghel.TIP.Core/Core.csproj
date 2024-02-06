@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Baghel.TIP.Core</AssemblyName>
+    <RootNamespace>Baghel.TIP.Core</RootNamespace>
+    <Company>Ravi Baghel</Company>
+    <Authors>Ravi Baghel</Authors>
+    <Title>TIP implementation in .NET</Title>
+    <Description>TIP implementation in .NET. </Description>
+  </PropertyGroup>
+
+</Project>
