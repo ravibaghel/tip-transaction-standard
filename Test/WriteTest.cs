@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Test
@@ -35,6 +36,7 @@ namespace Test
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
+            serializeOptions.Converters.Add(new JsonStringEnumConverter());
             string jsonString = JsonSerializer.Serialize(sellerLogTimes, serializeOptions);
             File.WriteAllText(fileName, jsonString);
             Assert.IsTrue(File.Exists(@"c:\temp\tip.json"));
