@@ -3,9 +3,13 @@
     /// <summary>
     /// New, Change, Cancel, Reject, Recall, Confirm 
     /// </summary>
-    public enum TransactionType {
-        New, Change, Cancel, Reject, Recall, Confirm
-    }
+    public static class TransactionType
+    {
+        public static string New
+        {
+            get { return "New"; }
+        }
 
-    
+
+    }
 }

@@ -14,7 +14,7 @@
         /// Indicates the transaction type. New, Change, Cancel, Reject, Recall, Confirm 
         /// </summary>
         
-        public TransactionType TransactionType { get;set; }
+        public string TransactionType { get;set; }
         /// <summary>
         /// Indicates the unique identifier of the source of information from an external system 
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using Baghel.TIP.Core.LogTimes;
+﻿using Baghel.TIP.Core.Common;
+using Baghel.TIP.Core.LogTimes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,18 @@ namespace Test
             transactionIdentifier.SourceName = "Test";
             sellerLogTimes.TransactionId = transactionIdentifier;
             sellerLogTimes.TimeStamp = DateTime.Now;
+            sellerLogTimes.ExternalComment = "Test Comment";
+            sellerLogTimes.MediaOutlets = new List<MediaOutlet>
+            {
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaoutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+            } };
             string fileName = @"c:\temp\tip.json";
             var serializeOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
-            string jsonString = JsonSerializer.Serialize(sellerLogTimes,serializeOptions);
+            string jsonString = JsonSerializer.Serialize(sellerLogTimes, serializeOptions);
             File.WriteAllText(fileName, jsonString);
             Assert.IsTrue(File.Exists(@"c:\temp\tip.json"));
 
