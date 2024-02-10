@@ -26,5 +26,8 @@ namespace Baghel.TIP.Core.Model.LogTimes
         public List<Identifier> LineReferences { get; set; }
         public CpeCode CpeCode { get; set; }
         public Buyer Buyer { get; set; }
+        public Advertiser Advertiser { get; set; }
+        public Brand Brand { get; set; }
+        public Product Product { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Buy-side organization information
     /// </summary>
-    public class Buyer
+    public struct Buyer
     {
         /// <summary>
         /// Array of identifier objects used to identify the buyer id and it source system

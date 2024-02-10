@@ -16,7 +16,10 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// Array of MediaOutlet objects  
         /// </summary>
         public List<MediaOutlet> MediaOutlets { get; set; }
+        /// <summary>
+        /// Units listed in the API units can be defined by the system that is creating the API. 
+        /// </summary>
+        public List<Unit> Units { get; set; }
 
-       
     }
 }

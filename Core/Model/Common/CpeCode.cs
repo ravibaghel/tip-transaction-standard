@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Packages the buyer's client code, product code and estimate codes
     /// </summary>
-    public class CpeCode
+    public struct CpeCode
     {
         /// <summary>
         /// Client code provided from the buyer
