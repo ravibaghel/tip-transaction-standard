@@ -1,8 +1,11 @@
-﻿namespace Baghel.TIP.Core.Common
+﻿using System.Runtime.Serialization;
+
+namespace Baghel.TIP.Core.Model.Common
 {
     /// <summary>
     /// General transaction header information
     /// </summary>
+    
     public abstract class TransactionHeader
     {
         /// <summary>
@@ -13,7 +16,7 @@
         /// <summary>
         /// Transaction identifier
         /// </summary>
-        
+
         public TransactionIdentifier TransactionId { get; set; }
         /// <summary>
         /// Original Transaction identifier
@@ -22,7 +25,7 @@
         /// <summary>
         /// Date and time the transaction was created - date-time represent UTC of the server. {"example": "2021-07-21T17:32:28Z"}
         /// </summary>
-        
+
         public DateTime TimeStamp { get; set; }
     }
 }

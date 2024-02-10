@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baghel.TIP.Core.Common
+namespace Baghel.TIP.Core.Model.Common
 {
     /// <summary>
     /// Identifies ids and system source association

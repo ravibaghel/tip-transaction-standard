@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baghel.TIP.Core.Common
+namespace Baghel.TIP.Core.Model.Common
 {
     /// <summary>
     /// Linear broadcast television or non-linear sell-side service
@@ -14,7 +14,7 @@ namespace Baghel.TIP.Core.Common
         /// <summary>
         /// Array of identifier objects used to identify the mediaOutletId and its source system
         /// </summary>
-        public IList<Identifier> MediaoutletIds { get; set; }
+        public List<Identifier> MediaOutletIds { get; set; }
         /// <summary>
         /// Station, network name or entity associated to mediaOutletId
         /// </summary>

@@ -1,6 +1,7 @@
-﻿using Baghel.TIP.Core.Common;
+﻿using Baghel.TIP.Core.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
-namespace Baghel.TIP.Core.LogTimes
+namespace Baghel.TIP.Core.Model.LogTimes
 {
     /// <summary>
     /// Allows the seller to send to the buyer the log times information. No Request from buyer is required.
@@ -14,6 +15,8 @@ namespace Baghel.TIP.Core.LogTimes
         /// <summary>
         /// Array of MediaOutlet objects  
         /// </summary>
-        public IList<MediaOutlet> MediaOutlets { get; set; }
+        public List<MediaOutlet> MediaOutlets { get; set; }
+
+       
     }
 }
