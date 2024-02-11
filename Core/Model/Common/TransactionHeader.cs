@@ -1,17 +1,18 @@
-﻿using System.Runtime.Serialization;
+﻿using Baghel.TIP.Core.Validations;
+using System.Runtime.Serialization;
 
 namespace Baghel.TIP.Core.Model.Common
 {
     /// <summary>
     /// General transaction header information
     /// </summary>
-    
-    public abstract class TransactionHeader
+
+    public abstract class TransactionHeader : IModel
     {
+
         /// <summary>
         /// TIP version of the interface
         /// </summary>
-        
         public string TipVersion { get; set; }
         /// <summary>
         /// Transaction identifier
@@ -27,5 +28,6 @@ namespace Baghel.TIP.Core.Model.Common
         /// </summary>
 
         public DateTime TimeStamp { get; set; }
+       
     }
 }

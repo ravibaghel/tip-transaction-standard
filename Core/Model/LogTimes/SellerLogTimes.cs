@@ -1,5 +1,7 @@
 ﻿using Baghel.TIP.Core.Model.Common;
+using Baghel.TIP.Core.Validations;
 using System.ComponentModel.DataAnnotations;
+using System.Collections;
 
 namespace Baghel.TIP.Core.Model.LogTimes
 {
@@ -8,6 +10,13 @@ namespace Baghel.TIP.Core.Model.LogTimes
     /// </summary>
     public class SellerLogTimes : TransactionHeader
     {
+        private readonly IValidate<SellerLogTimes> validate;
+        
+        public SellerLogTimes(IValidate<SellerLogTimes> validate)
+        {
+            if (validate == null) this.validate = new ValidateSellerLogTimes();
+        }
+
         /// <summary>
         /// String that indicates additional information the seller can send to the buyer
         /// </summary>
@@ -21,5 +30,11 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// </summary>
         public List<Unit> Units { get; set; }
 
+        public Response Response { get; set; }
+
+        public virtual void Validate()
+        {
+            validate.Validate(this);
+        }
     }
 }

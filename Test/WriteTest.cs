@@ -12,9 +12,21 @@ namespace Test
     internal class WriteTest
     {
         [Test]
+        public void CheckModelFromJSON() {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            };
+            options.Converters.Add(new JsonStringEnumConverter());
+            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\tip.json"),options);
+            Assert.IsInstanceOf(typeof(SellerLogTimes),
+                                sellerLogTimes);
+        }
+        [Test]
         public void CheckJSON()
         {
-            var sellerLogTimes = new SellerLogTimes();
+            var sellerLogTimes = new SellerLogTimes(null);
             sellerLogTimes.TipVersion = "6.0.0";
             var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
             {
@@ -46,9 +58,33 @@ namespace Test
         }
 
         [Test]
+        public void CheckModel()
+        {
+            var sellerLogTimes = new SellerLogTimes(null);
+            //sellerLogTimes.TipVersion = "6.0.0";
+            var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
+            {
+                TransactionId = "121212",
+                SourceId = "123456789",
+                TransactionType = TransactionType.New,
+                SourceName = "Test"
+            };
+            sellerLogTimes.TransactionId = transactionIdentifier;
+            sellerLogTimes.TimeStamp = DateTime.Now;
+            sellerLogTimes.ExternalComment = "Test Comment";
+            sellerLogTimes.MediaOutlets = new List<MediaOutlet>
+            {
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+            } };
+            sellerLogTimes.Validate();
+            Assert.AreEqual("tipVersion cannot be empty", (sellerLogTimes.Response as Error).ErrorList["tipVersion"]);
+
+        }
+
+        [Test]
         public void CheckXML()
         {
-            var sellerLogTimes = new SellerLogTimes();
+            var sellerLogTimes = new SellerLogTimes(null);
             sellerLogTimes.TipVersion = "6.0.0";
             var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
             {

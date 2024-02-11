@@ -12,4 +12,8 @@
     <Description>TIP implementation in .NET. </Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="API\" />
+  </ItemGroup>
+
 </Project>

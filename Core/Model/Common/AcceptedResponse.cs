@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Defines successful return from all APIs
     /// </summary>
-    public class AcceptedResponse
+    public class AcceptedResponse : Response
     {
         /// <summary>
         /// Gets or Sets TransactionId

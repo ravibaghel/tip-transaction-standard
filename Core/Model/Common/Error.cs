@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Defines errors returned from all APIs
     /// </summary>
-    public class Error
+    public class Error : Response
     {
         /// <summary>
         /// Gets or Sets ErrorCode
