@@ -19,15 +19,16 @@ namespace Test
                 WriteIndented = true
             };
             options.Converters.Add(new JsonStringEnumConverter());
-            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\tip.json"),options);
+            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\sample.json"),options);
+           
             Assert.IsInstanceOf(typeof(SellerLogTimes),
                                 sellerLogTimes);
         }
         [Test]
         public void CheckJSON()
         {
-            var sellerLogTimes = new SellerLogTimes(null);
-            sellerLogTimes.TipVersion = "6.0.0";
+            var sellerLogTimes = new SellerLogTimes();
+            //sellerLogTimes.TransactionHeader.TipVersion = "6.0.0";
             var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
             {
                 TransactionId = "121212",
@@ -35,8 +36,8 @@ namespace Test
                 TransactionType = TransactionType.New,
                 SourceName = "Test"
             };
-            sellerLogTimes.TransactionId = transactionIdentifier;
-            sellerLogTimes.TimeStamp = DateTime.Now;
+            //sellerLogTimes.TransactionHeader.TransactionId = transactionIdentifier;
+            //sellerLogTimes.TimeStamp = DateTime.Now;
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
@@ -60,7 +61,7 @@ namespace Test
         [Test]
         public void CheckModel()
         {
-            var sellerLogTimes = new SellerLogTimes(null);
+            var sellerLogTimes = new SellerLogTimes();
             //sellerLogTimes.TipVersion = "6.0.0";
             var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
             {
@@ -69,8 +70,8 @@ namespace Test
                 TransactionType = TransactionType.New,
                 SourceName = "Test"
             };
-            sellerLogTimes.TransactionId = transactionIdentifier;
-            sellerLogTimes.TimeStamp = DateTime.Now;
+            //sellerLogTimes.TransactionId = transactionIdentifier;
+            //sellerLogTimes.TimeStamp = DateTime.Now;
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
@@ -84,8 +85,8 @@ namespace Test
         [Test]
         public void CheckXML()
         {
-            var sellerLogTimes = new SellerLogTimes(null);
-            sellerLogTimes.TipVersion = "6.0.0";
+            var sellerLogTimes = new SellerLogTimes();
+            //sellerLogTimes.TipVersion = "6.0.0";
             var transactionIdentifier = new Baghel.TIP.Core.Model.Common.TransactionIdentifier
             {
                 TransactionId = "121212",
@@ -93,8 +94,8 @@ namespace Test
                 TransactionType = TransactionType.New,
                 SourceName = "Test"
             };
-            sellerLogTimes.TransactionId = transactionIdentifier;
-            sellerLogTimes.TimeStamp = DateTime.Now;
+            //sellerLogTimes.TransactionId = transactionIdentifier;
+            //sellerLogTimes.TimeStamp = DateTime.Now;
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {

@@ -7,7 +7,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// General transaction header information
     /// </summary>
 
-    public abstract class TransactionHeader : IModel
+    public struct TransactionHeader
     {
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Baghel.TIP.Core.Model.Common
         /// Date and time the transaction was created - date-time represent UTC of the server. {"example": "2021-07-21T17:32:28Z"}
         /// </summary>
 
-        public DateTime TimeStamp { get; set; }
+        public System.DateTime TimeStamp { get; set; }
        
     }
 }
