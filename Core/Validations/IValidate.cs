@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Baghel.TIP.Core.Validations
 {
-    public interface IValidate<T> where T: class 
+    public interface IValidate<T>
     {
         public void Validate(T model);
 

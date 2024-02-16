@@ -27,10 +27,7 @@ namespace Baghel.TIP.Core.Model.LogTimes
         {
             this.validate = validate;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public TransactionHeader TransactionHeader { get; set; }
+      
         /// <summary>
         /// String that indicates additional information the seller can send to the buyer
         /// </summary>
@@ -43,8 +40,6 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// Units listed in the API units can be defined by the system that is creating the API. 
         /// </summary>
         public List<Unit> Units { get; set; }
-        
-        public Response Response { get; set; }
 
         public virtual void Validate()
         {

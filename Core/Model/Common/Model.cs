@@ -2,6 +2,10 @@
 {
     public abstract class Model
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public TransactionHeader TransactionHeader { get; set; }
         public Response Response { get; set; }
     }
 }
