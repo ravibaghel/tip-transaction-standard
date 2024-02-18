@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace Baghel.TIP.Core.Validations
 {
-    internal abstract class CommonValidations
+    public class CommonValidations: IValidate<Model.Common.Model>
     {
-        public void Validate(Model.Common.Model model, Error error)
+        public void Validate(Model.Common.Model model)
         {
-            if (string.IsNullOrEmpty(model.TransactionHeader.TipVersion)) error.ErrorList.Add("TransactionHeader.TipVersion", "tipVersion cannot be empty");
-            if (string.IsNullOrEmpty(model.TransactionHeader.TransactionId.SourceId)) error.ErrorList.Add("TransactionHeader.TransactionId.SourceId", "SourceId cannot be empty");
-            if (string.IsNullOrEmpty(model.TransactionHeader.TransactionId.SourceName)) error.ErrorList.Add("TransactionHeader.TransactionId.SourceName", "SourceName cannot be empty");
-            if (model.TransactionHeader.TimeStamp.Equals(default(System.DateTime))) error.ErrorList.Add("TransactionHeader.TimeStamp", "Timestamp cannot be empty");
-
+            if (string.IsNullOrEmpty(model.TransactionHeader.TipVersion)) model.Error.ErrorList.Add("TransactionHeader.TipVersion", "tipVersion cannot be empty");
+            if (string.IsNullOrEmpty(model.TransactionHeader.TransactionId.SourceId)) model.Error.ErrorList.Add("TransactionHeader.TransactionId.SourceId", "SourceId cannot be empty");
+            if (string.IsNullOrEmpty(model.TransactionHeader.TransactionId.SourceName)) model.Error.ErrorList.Add("TransactionHeader.TransactionId.SourceName", "SourceName cannot be empty");
+            if (model.TransactionHeader.TimeStamp.Equals(default(System.DateTime))) model.Error.ErrorList.Add("TransactionHeader.TimeStamp", "Timestamp cannot be empty");
         }
+
+        
     }
 }

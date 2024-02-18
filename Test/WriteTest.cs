@@ -1,5 +1,6 @@
 ﻿using Baghel.TIP.Core.Model.Common;
 using Baghel.TIP.Core.Model.LogTimes;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,15 +13,16 @@ namespace Test
     internal class WriteTest
     {
         [Test]
-        public void CheckModelFromJSON() {
+        public void CheckModelFromJSON()
+        {
             var options = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
             options.Converters.Add(new JsonStringEnumConverter());
-            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\sample.json"),options);
-           
+            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\sample.json"), options);
+
             Assert.IsInstanceOf(typeof(SellerLogTimes),
                                 sellerLogTimes);
         }
@@ -53,7 +55,7 @@ namespace Test
             string jsonString = JsonSerializer.Serialize(sellerLogTimes, serializeOptions);
             //string jsonString = JsonConvert.SerializeObject(sellerLogTimes, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
-            
+
             Assert.IsTrue(File.Exists(@"c:\temp\tip.json"));
 
         }
@@ -77,8 +79,9 @@ namespace Test
             {
                 new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
+            sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             sellerLogTimes.Validate();
-            Assert.AreEqual("tipVersion cannot be empty", (sellerLogTimes.Response as Error).ErrorList["TransactionHeader.TipVersion"]);
+            Assert.AreEqual("tipVersion cannot be empty", sellerLogTimes.Error.ErrorList["TransactionHeader.TipVersion"]);
 
         }
 
@@ -102,13 +105,13 @@ namespace Test
                 new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             string fileName = @"c:\temp\tip.xml";
-            
-            
+
+
             var serializer = new XmlSerializer(typeof(SellerLogTimes));
             using var memoryStream = new MemoryStream();
             XmlTextWriter streamWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
             streamWriter.Formatting = Formatting.Indented;
-            
+
             serializer.Serialize(streamWriter, sellerLogTimes);
 
             var result = Encoding.UTF8.GetString(memoryStream.ToArray());

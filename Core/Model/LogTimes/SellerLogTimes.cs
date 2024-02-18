@@ -17,13 +17,13 @@ namespace Baghel.TIP.Core.Model.LogTimes
     public class SellerLogTimes : Common.Model
     {
         
-        private readonly IValidate<SellerLogTimes> validate;
+        private readonly IValidate<Model.Common.Model> validate;
 
         public SellerLogTimes()
         {
-            this.validate = new ValidateSellerLogTimes();
+            
         }
-        public SellerLogTimes(IValidate<SellerLogTimes> validate)
+        public SellerLogTimes(IValidate<Model.Common.Model> validate)
         {
             this.validate = validate;
         }

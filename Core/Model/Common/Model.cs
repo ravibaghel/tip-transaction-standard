@@ -6,6 +6,6 @@
         /// 
         /// </summary>
         public TransactionHeader TransactionHeader { get; set; }
-        public Response Response { get; set; }
+        public Error Error { get; set; }
     }
 }
