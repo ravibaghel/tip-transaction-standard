@@ -5,7 +5,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public TransactionHeader TransactionHeader { get; set; }
         public Error Error { get; set; }
+
     }
 }

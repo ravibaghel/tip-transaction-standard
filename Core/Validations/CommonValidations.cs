@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Baghel.TIP.Core.Validations
 {
-    public class CommonValidations: IValidate<Model.Common.Model>
+    internal class CommonValidations: IValidate<SellerLogTimes>
     {
-        public void Validate(Model.Common.Model model)
+        public void Validate(SellerLogTimes model)
         {
             if (string.IsNullOrEmpty(model.TransactionHeader.TipVersion)) model.Error.ErrorList.Add("TransactionHeader.TipVersion", "tipVersion cannot be empty");
             if (string.IsNullOrEmpty(model.TransactionHeader.TransactionId.SourceId)) model.Error.ErrorList.Add("TransactionHeader.TransactionId.SourceId", "SourceId cannot be empty");

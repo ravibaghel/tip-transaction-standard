@@ -10,7 +10,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Object representing the creative
     /// </summary>
-    public class Creative
+    public struct Creative
     {
         public enum StatusEnum{ [EnumMember(Value = "Not Final")]NotFinal, Final, [EnumMember(Value ="On-Hand")]OnHand }
         /// <summary>

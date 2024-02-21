@@ -2,16 +2,15 @@
 using Baghel.TIP.Core.Model.LogTimes;
 namespace Baghel.TIP.Core.Validations
 {
-    public class ValidateSellerLogTimes : ValidationLinker
+    internal class ValidateSellerLogTimes : ValidationLinker<SellerLogTimes>
     {
-        public ValidateSellerLogTimes(IValidate<Model.Common.Model> validate) : base(validate)
+        public ValidateSellerLogTimes(IValidate<SellerLogTimes> validate) : base(validate)
         {
         }
-
-        public override void Validate(Model.Common.Model model)
+        public override void Validate(SellerLogTimes model)
         {
             base.Validate(model);
-            var sellerLogTimes = (SellerLogTimes)model;
+            var sellerLogTimes = model;
             if (sellerLogTimes.MediaOutlets == null)
                 model.Error.ErrorList.Add("mediaOutlets", "mediaOutlets cannot be empty");
             else

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Baghel.TIP.Core.Validations
 {
-    public class ValidationLinker : IValidate<Model.Common.Model>
+    internal class ValidationLinker<T> : IValidate<T>
     {
-        private readonly IValidate<Model.Common.Model> _validator;
+        private readonly IValidate<T> _validator;
 
-        public ValidationLinker(IValidate<Model.Common.Model> validate)
+        public ValidationLinker(IValidate<T> validate)
         {
             _validator = validate;
         }
 
-        public virtual void Validate(Model.Common.Model model)
+        public virtual void Validate(T model)
         {
 
             _validator.Validate(model);
