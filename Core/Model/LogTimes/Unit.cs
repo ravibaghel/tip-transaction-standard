@@ -1,5 +1,6 @@
 ﻿using Baghel.TIP.Core.Model.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -86,6 +87,7 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// Not required when unit's status is "No Run"
         /// </summary>
         public Common.DateTime DateTime { get; set; }
+
         public List<ChildUnit> ChildUnits { get; set; }
     }
 }

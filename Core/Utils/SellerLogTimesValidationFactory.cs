@@ -13,7 +13,7 @@ namespace Baghel.TIP.Core.Utils
         public IValidate<SellerLogTimes> Create()
         {
             
-            return new ValidateSellerLogTimes(new CommonValidations());
+            return new ValidateSellerLogTimes(new SellerLogTimesCommonValidations());
         }
 
     }

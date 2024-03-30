@@ -17,7 +17,7 @@ namespace Baghel.TIP.Core.Model.LogTimes
     /// <summary>
     /// Allows the seller to send to the buyer the log times information. No Request from buyer is required.
     /// </summary>
-    public class SellerLogTimes : Common.Model,IFormat<SellerLogTimes>
+    public class SellerLogTimes : Common.ModelBase
     {
         
         private readonly IValidate<SellerLogTimes> validate;

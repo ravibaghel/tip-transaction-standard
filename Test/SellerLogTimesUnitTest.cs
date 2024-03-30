@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Test
@@ -63,6 +65,21 @@ namespace Test
             sellerLogTimes.Validate();
             var json = sellerLogTimes.ToJSON();
             Assert.IsNotEmpty(json);
+        }
+
+        [Test]
+        public void LoadFromJSON()
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            };
+            options.Converters.Add(new JsonStringEnumConverter());
+            var sellerLogTimes = JsonSerializer.Deserialize<SellerLogTimes>(File.ReadAllText(@"c:\temp\sample.json"), options);
+
+            Assert.IsInstanceOf(typeof(SellerLogTimes),
+                                sellerLogTimes);
         }
     }
 }
