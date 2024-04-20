@@ -1,16 +1,7 @@
 ﻿using Baghel.TIP.Core.Model.Common;
 using Baghel.TIP.Core.Validations;
-using System.ComponentModel.DataAnnotations;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.Net.Sockets;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Text;
 using Baghel.TIP.Core.Utils;
-using System.Text.Json.Serialization;
-using System.Text.Json;
+using System.Collections.Generic;
 
 namespace Baghel.TIP.Core.Model.LogTimes
 {
@@ -44,27 +35,9 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// </summary>
         public List<Unit> Units { get; set; }
 
-        public SellerLogTimes FromJSON(string json)
-        {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-            options.Converters.Add(new JsonStringEnumConverter());
-            return JsonSerializer.Deserialize<SellerLogTimes>(json, options);
-        }
+       
 
-        public string ToJSON()
-        {
-            var serializeOptions = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-            serializeOptions.Converters.Add(new JsonStringEnumConverter());
-            return JsonSerializer.Serialize(this, serializeOptions);
-        }
+      
 
         public virtual void Validate()
         {

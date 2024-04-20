@@ -63,7 +63,7 @@ namespace Test
             } };
             sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             sellerLogTimes.Validate();
-            var json = sellerLogTimes.ToJSON();
+            var json = "";// sellerLogTimes.ToJSON();
             Assert.IsNotEmpty(json);
         }
 

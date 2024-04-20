@@ -9,6 +9,6 @@ namespace Baghel.TIP.Core.Utils
 {
     public interface IFactoryValidation<T>
     {
-        public IValidate<T> Create();
+        IValidate<T> Create();
     }
 }

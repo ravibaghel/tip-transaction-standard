@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Validations
 {
     public interface IValidate<T>
     {
-        public void Validate(T model);
+        void Validate(T model);
 
 
     }
