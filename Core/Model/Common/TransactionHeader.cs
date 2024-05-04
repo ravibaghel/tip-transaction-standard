@@ -7,7 +7,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// General transaction header information
     /// </summary>
 
-    public struct TransactionHeader
+    public class TransactionHeader
     {
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Baghel.TIP.Core.Model.Common
         /// <summary>
         /// Original Transaction identifier
         /// </summary>
-        public TransactionIdentifier OriginalTransactionId { get; set; }
+        public TransactionIdentifier? OriginalTransactionId { get; set; }
         /// <summary>
         /// Date and time the transaction was created - date-time represent UTC of the server. {"example": "2021-07-21T17:32:28Z"}
         /// </summary>

@@ -3,7 +3,7 @@
     /// <summary>
     /// Transaction identifier details
     /// </summary>
-    public struct TransactionIdentifier
+    public class TransactionIdentifier
     {
         /// <summary>
         /// Global unique identifier (GUID). {"format":"uuid", "example":"1C237FDD-940D-499E-AA20-DF3B9CE0908E"}
