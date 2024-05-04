@@ -48,6 +48,19 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// <summary>
         /// $0 (i.e., free) ad impressions/pricing that a publisher includes with paid media to maximize the overall proposal/order
         /// </summary>
+        public LinkTypeModel LinkType { get; set; }
+        /// <summary>
+        /// Indicates if the spot is a makegood
+        /// </summary>
+        public bool IsMakegood { get; set; }
+        /// <summary>
+        /// Audience Deficiency Unit; Units of commercial advertising inventory made available to advertisers as fulfillment for the inventory the advertisers purchased that ran in programs that under-delivered on contracted audience demographic ratings
+        /// </summary>
+        public bool IsAdu { get; set; }
+        /// <summary>
+        /// ArrayList of the 'original' preempted unit being resolved when the isMakegood indicator is 'Y';  a makegood unit may be resolved by one too many preempt spots 
+        /// </summary>
+        public List<string> PreemptUnitIds { get; set; }
         public bool IsBonus { get; set; }
         /// <summary>
         /// Length of commercial unit
@@ -56,7 +69,7 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// <summary>
         /// Actual length of commerical unit 
         /// </summary>
-        public int BooedLength { get; set; }
+        public int BookedLength { get; set; }
         /// <summary>
         /// Gross unit rate 
         /// </summary>
@@ -87,7 +100,9 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// Not required when unit's status is "No Run"
         /// </summary>
         public Common.DateTime DateTime { get; set; }
-
+        /// <summary>
+        /// Array of ChildUnit objects
+        /// </summary>
         public List<ChildUnit> ChildUnits { get; set; }
     }
 }

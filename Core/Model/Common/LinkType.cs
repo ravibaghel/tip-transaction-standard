@@ -18,10 +18,10 @@ namespace Baghel.TIP.Core.Model.Common
         /// <summary>
         /// Unique number to communicate the association of two or more units within a link type
         /// </summary>
-        public int LinkNum { get; set; }
+        public int? LinkNum { get; set; }
         /// <summary>
         /// Airing sequential order for the units linked together such as A or B, etc. 
         /// </summary>
-        public int LinkSeq { get; set; }
+        public int? LinkSeq { get; set; }
     }
 }

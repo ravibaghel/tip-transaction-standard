@@ -14,7 +14,7 @@ namespace Baghel.TIP.Core.Model.Common
         /// <summary>
         /// Gets or Sets ErrorCode
         /// </summary>
-        public string ErrorCode { get; set; }
+        public int ErrorCode { get; set; }
         /// <summary>
         /// Gets or Sets ErrorMessage
         /// </summary>

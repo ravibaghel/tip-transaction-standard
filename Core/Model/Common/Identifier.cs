@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Identifies ids and system source association
     /// </summary>
-    public struct Identifier
+    public class Identifier
     {
         /// <summary>
         /// Identifier from the buyer or seller that indicates the id assignment 

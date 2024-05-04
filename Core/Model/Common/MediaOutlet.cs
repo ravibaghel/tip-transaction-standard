@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Linear broadcast television or non-linear sell-side service
     /// </summary>
-    public struct MediaOutlet
+    public class MediaOutlet
     {
         /// <summary>
         /// Array of identifier objects used to identify the mediaOutletId and its source system
