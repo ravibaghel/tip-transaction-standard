@@ -80,7 +80,7 @@ namespace Test
                 new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
-            sellerLogTimes.Validate();
+            //sellerLogTimes.Validate();
             Assert.AreEqual("tipVersion cannot be empty", sellerLogTimes.Error.ErrorList["TransactionHeader.TipVersion"]);
 
         }

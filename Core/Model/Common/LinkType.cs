@@ -9,8 +9,9 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Linking of matching or related commercials 
     /// </summary>
-    public struct LinkTypeModel
+    public class LinkTypeModel
     {
+        private LinkTypeEnum _linkType;
         /// <summary>
         /// Indicates the link constraint between two or more units (spots)
         /// </summary>

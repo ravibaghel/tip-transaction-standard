@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Broadcast date and broadcast time used in Logtimes & Invoices
     /// </summary>
-    public struct DateTime
+    public class DateTime
     {
         /// <summary>
         /// Broadcast date on which the unit aired/scheduled; this is not a calendar date

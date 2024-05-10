@@ -2,26 +2,31 @@
 using Baghel.TIP.Core.Validations;
 using Baghel.TIP.Core.Utils;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace Baghel.TIP.Core.Model.LogTimes
 {
     /// <summary>
     /// Allows the seller to send to the buyer the log times information. No Request from buyer is required.
     /// </summary>
-    public class SellerLogTimes : Common.ModelBase
+    public class SellerLogTimes
     {
-        
-        private readonly IValidate<SellerLogTimes> validate;
-
-        public SellerLogTimes()
+        private TransactionHeader _transactionHeader;
+        private List<MediaOutlet> _mediaOutlets;
+        private List<Unit> _units;
+        public TransactionHeader TransactionHeader
         {
-            this.validate = Factory.CreateValidation();
+            get { return _transactionHeader; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(TransactionHeader), "TransactionHeader cannot be null.");
+                }
+                _transactionHeader = value;
+            }
         }
-        public SellerLogTimes(IValidate<SellerLogTimes> validate)
-        {
-            this.validate = validate;
-        }
-        public TransactionHeader TransactionHeader { get; set; }
         /// <summary>
         /// String that indicates additional information the seller can send to the buyer
         /// </summary>
@@ -29,19 +34,33 @@ namespace Baghel.TIP.Core.Model.LogTimes
         /// <summary>
         /// Array of MediaOutlet objects  
         /// </summary>
-        public List<MediaOutlet> MediaOutlets { get; set; }
+        public List<MediaOutlet> MediaOutlets
+        {
+            get { return _mediaOutlets; }
+            set
+            {
+                if (value == null || !value.Any())
+                {
+                    throw new ArgumentException("MediaOutlets cannot be null or empty.", nameof(MediaOutlets));
+                }
+                _mediaOutlets = value;
+            }
+        }
         /// <summary>
         /// Units listed in the API units can be defined by the system that is creating the API. 
         /// </summary>
-        public List<Unit> Units { get; set; }
-
-       
-
-      
-
-        public virtual void Validate()
+        public List<Unit> Units
         {
-            validate.Validate(this);
+            get { return _units; }
+            set
+            {
+                if (value == null || !value.Any())
+                {
+                    throw new ArgumentException("Units cannot be null or empty.", nameof(Units));
+                }
+                _units = value;
+            }
         }
+
     }
 }

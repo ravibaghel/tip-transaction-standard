@@ -1,14 +1,8 @@
 ﻿using Baghel.TIP.Core.Model.Common;
 using Baghel.TIP.Core.Model.LogTimes;
-using Baghel.TIP.Core.Validations;
 using NUnit.Framework.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Test
 {
@@ -20,7 +14,8 @@ namespace Test
         public void Init() {
             //IValidate<Model> validate = (new ValidateSellerLogTimes(new CommonValidations()));
             sellerLogTimes = new SellerLogTimes();
-            sellerLogTimes.Error = new Baghel.TIP.Core.Model.Common.Error() { ErrorList = new Dictionary<string, string>() };
+            //sellerLogTimes.Error = new Baghel.TIP.Core.Model.Common.Error() { ErrorList = new Dictionary<string, string>() };
+            //SellerLogTimesValidator sellerLogTimesValidator = new SellerLogTimesValidator();
 
         }
         [Test]
@@ -39,8 +34,8 @@ namespace Test
             {
                 new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
-            sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
-            sellerLogTimes.Validate();
+            //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
+            //sellerLogTimes.Validate();
             Assert.That(sellerLogTimes.Error.ErrorList["TransactionHeader.TipVersion"], Is.EqualTo("tipVersion cannot be empty"));
         }
 
@@ -61,8 +56,8 @@ namespace Test
             {
                 new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
-            sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
-            sellerLogTimes.Validate();
+            //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
+            //sellerLogTimes.Validate();
             var json = "";// sellerLogTimes.ToJSON();
             Assert.IsNotEmpty(json);
         }

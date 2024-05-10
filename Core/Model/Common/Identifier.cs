@@ -11,10 +11,23 @@ namespace Baghel.TIP.Core.Model.Common
     /// </summary>
     public class Identifier
     {
+        private string _id;
+        private string _srcName;
         /// <summary>
         /// Identifier from the buyer or seller that indicates the id assignment 
         /// </summary>
-        public string Id { get; set; }
+        public string Id
+        {
+            get { return _id; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Id cannot be null or empty.");
+                }
+                _id = value;
+            }
+        }
         /// <summary>
         /// Identifier from the buyer or seller that indicates the id assignment  version 
         /// </summary>
@@ -26,6 +39,17 @@ namespace Baghel.TIP.Core.Model.Common
         /// <summary>
         /// Name of the system source that is providing the id 
         /// </summary>
-        public string SrcName { get; set; }
+        public string SrcName
+        {
+            get { return _srcName; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("SrcName cannot be null or empty.");
+                }
+                _srcName = value;
+            }
+        }
     }
 }
