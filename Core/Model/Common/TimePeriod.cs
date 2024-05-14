@@ -9,10 +9,34 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Combines date window, DOW and time window objects
     /// </summary>
-    public struct TimePeriod
+    public class TimePeriod
     {
-        public DateWindow DateWindow { get; set; }
-        public DayOfWeek DOW { get; set; }
+        private DateWindow _dateWindow;
+        private DayOfWeek _dow;
+        public DateWindow DateWindow
+        {
+            get { return _dateWindow; }
+            set
+            {
+                if (value is null)
+                {
+                    throw new ArgumentException("DateWindow cannot be null.");
+                }
+                _dateWindow = value;
+            }
+        }
+        public DayOfWeek DOW
+        {
+            get { return _dow; }
+            set
+            {
+                if (!Enum.IsDefined(typeof(DayOfWeek), value))
+                {
+                    throw new ArgumentException("Invalid DayOfWeek.");
+                }
+                _dow = value;
+            }
+        }
         public TimeWindow TimeWindow { get; set; }
     }
 }

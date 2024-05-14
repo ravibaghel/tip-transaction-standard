@@ -11,10 +11,34 @@ namespace Baghel.TIP.Core.Model.Common
     /// </summary>
     public class DateTime
     {
+        private System.DateTime? _broadcastDate;
+        private System.DateTime? _calendarDateTime;
         /// <summary>
         /// Broadcast date on which the unit aired/scheduled; this is not a calendar date
         /// </summary>
-        public System.DateTime BroadcastDate { get; set; }
-        public System.DateTime CalendarDateTime { get; set; }
+        public System.DateTime? BroadcastDate
+        {
+            get { return _broadcastDate; }
+            set
+            {
+                if (value.HasValue && value.Value.Kind != DateTimeKind.Utc)
+                {
+                    throw new ArgumentException("BroadcastDate must be in UTC.");
+                }
+                _broadcastDate = value;
+            }
+        }
+        public System.DateTime? CalendarDateTime
+        {
+            get { return _calendarDateTime; }
+            set
+            {
+                if (value.HasValue && value.Value.Kind != DateTimeKind.Utc)
+                {
+                    throw new ArgumentException("CalendarDateTime must be in UTC.");
+                }
+                _calendarDateTime = value;
+            }
+        }
     }
 }

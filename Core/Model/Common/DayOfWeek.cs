@@ -9,7 +9,7 @@ namespace Baghel.TIP.Core.Model.Common
     /// <summary>
     /// Valid days of week
     /// </summary>
-    public struct DayOfWeek
+    public class DayOfWeek
     {
         public bool IsMonday { get; set; }
         public bool IsTuesday { get; set; }
