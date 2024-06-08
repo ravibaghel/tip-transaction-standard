@@ -10,6 +10,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 		{34551C08-2EB2-4B7F-887A-9A9D243307D9} = {34551C08-2EB2-4B7F-887A-9A9D243307D9}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{ED9B8B14-518D-4817-A8EF-EEDDC16E44CC}"
+	ProjectSection(SolutionItems) = preProject
+		TransactionHeader.md = TransactionHeader.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

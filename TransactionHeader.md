@@ -1,4 +1,4 @@
-﻿# Transaction Header
+﻿﻿# Transaction Header
 General transaction header information. The transaction header is an object that contains the metadata for a transaction. It is used to store information about the transaction, such as the transaction ID, the transaction type, the transaction timestamp, and the transaction status.
 
 | Model / Property Name |	Required, Optional | Data Type | Description |
