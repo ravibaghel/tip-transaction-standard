@@ -10,10 +10,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 		{34551C08-2EB2-4B7F-887A-9A9D243307D9} = {34551C08-2EB2-4B7F-887A-9A9D243307D9}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{ED9B8B14-518D-4817-A8EF-EEDDC16E44CC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{02DAC0D9-1C79-4DCE-A04F-7F0A6C67D1EE}"
 	ProjectSection(SolutionItems) = preProject
-		TransactionHeader.md = TransactionHeader.md
-		TransactionId.md = TransactionId.md
+		Docs\TransactionHeader.md = Docs\TransactionHeader.md
+		Docs\TransactionId.md = Docs\TransactionId.md
 	EndProjectSection
 EndProject
 Global
