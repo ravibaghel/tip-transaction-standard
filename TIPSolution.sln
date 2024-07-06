@@ -13,6 +13,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{ED9B8B14-518D-4817-A8EF-EEDDC16E44CC}"
 	ProjectSection(SolutionItems) = preProject
 		TransactionHeader.md = TransactionHeader.md
+		TransactionId.md = TransactionId.md
 	EndProjectSection
 EndProject
 Global
