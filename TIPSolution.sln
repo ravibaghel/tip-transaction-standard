@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{02DAC0D9-1C79-4DCE-A04F-7F0A6C67D1EE}"
 	ProjectSection(SolutionItems) = preProject
+		Docs\Identifier.md = Docs\Identifier.md
+		Docs\MediaOutlet.md = Docs\MediaOutlet.md
 		Docs\TransactionHeader.md = Docs\TransactionHeader.md
 		Docs\TransactionId.md = Docs\TransactionId.md
 	EndProjectSection
