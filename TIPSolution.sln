@@ -14,8 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{02DAC0D9-1
 	ProjectSection(SolutionItems) = preProject
 		Docs\Identifier.md = Docs\Identifier.md
 		Docs\MediaOutlet.md = Docs\MediaOutlet.md
+		README.md = README.md
 		Docs\TransactionHeader.md = Docs\TransactionHeader.md
 		Docs\TransactionId.md = Docs\TransactionId.md
+		Docs\Unit.md = Docs\Unit.md
 	EndProjectSection
 EndProject
 Global
