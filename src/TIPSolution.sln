@@ -10,21 +10,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 		{34551C08-2EB2-4B7F-887A-9A9D243307D9} = {34551C08-2EB2-4B7F-887A-9A9D243307D9}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{02DAC0D9-1C79-4DCE-A04F-7F0A6C67D1EE}"
-	ProjectSection(SolutionItems) = preProject
-		Docs\Advertiser.md = Docs\Advertiser.md
-		Docs\Brand.md = Docs\Brand.md
-		Docs\Buyer.md = Docs\Buyer.md
-		Docs\CPECode.md = Docs\CPECode.md
-		Docs\Identifier.md = Docs\Identifier.md
-		Docs\MediaOutlet.md = Docs\MediaOutlet.md
-		README.md = README.md
-		Docs\ReferenceId.md = Docs\ReferenceId.md
-		Docs\TransactionHeader.md = Docs\TransactionHeader.md
-		Docs\TransactionId.md = Docs\TransactionId.md
-		Docs\Unit.md = Docs\Unit.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

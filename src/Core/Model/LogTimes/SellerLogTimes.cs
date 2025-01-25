@@ -1,6 +1,4 @@
 ﻿using Baghel.TIP.Core.Model.Common;
-using Baghel.TIP.Core.Validations;
-using Baghel.TIP.Core.Utils;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -10,11 +8,12 @@ namespace Baghel.TIP.Core.Model.LogTimes
     /// <summary>
     /// Allows the seller to send to the buyer the log times information. No Request from buyer is required.
     /// </summary>
-    public class SellerLogTimes
+    public class SellerLogTimes : Response
     {
         private TransactionHeader _transactionHeader;
         private List<MediaOutlet> _mediaOutlets;
         private List<Unit> _units;
+       
         public TransactionHeader TransactionHeader
         {
             get { return _transactionHeader; }
@@ -22,6 +21,7 @@ namespace Baghel.TIP.Core.Model.LogTimes
             {
                 if (value == null)
                 {
+                    Errors.Add("TransactionHeader cannot be null.");
                     throw new ArgumentNullException(nameof(TransactionHeader), "TransactionHeader cannot be null.");
                 }
                 _transactionHeader = value;

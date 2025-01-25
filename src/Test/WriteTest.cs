@@ -43,7 +43,7 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             string fileName = @"c:\temp\tip.json";
             var serializeOptions = new JsonSerializerOptions
@@ -77,11 +77,11 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
-            sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
+            //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             //sellerLogTimes.Validate();
-            Assert.AreEqual("tipVersion cannot be empty", sellerLogTimes.Error.ErrorList["TransactionHeader.TipVersion"]);
+            Assert.That(sellerLogTimes.Errors[0], Is.EqualTo("tipVersion cannot be empty"));
 
         }
 
@@ -102,7 +102,7 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "ID", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             string fileName = @"c:\temp\tip.xml";
 

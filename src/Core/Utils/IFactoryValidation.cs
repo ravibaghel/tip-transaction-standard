@@ -1,5 +1,4 @@
-﻿using Baghel.TIP.Core.Validations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +8,6 @@ namespace Baghel.TIP.Core.Utils
 {
     public interface IFactoryValidation<T>
     {
-        IValidate<T> Create();
+        //IValidate<T> Create();
     }
 }

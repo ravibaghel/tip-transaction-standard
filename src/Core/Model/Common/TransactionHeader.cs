@@ -1,6 +1,4 @@
-﻿using Baghel.TIP.Core.Validations;
-using System;
-using System.Runtime.Serialization;
+﻿using System;
 
 namespace Baghel.TIP.Core.Model.Common
 {

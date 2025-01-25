@@ -32,11 +32,11 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             //sellerLogTimes.Validate();
-            Assert.That(sellerLogTimes.Error.ErrorList["TransactionHeader.TipVersion"], Is.EqualTo("tipVersion cannot be empty"));
+            Assert.That(sellerLogTimes.Errors[0], Is.EqualTo("tipVersion cannot be empty"));
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaoutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
             } };
             //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             //sellerLogTimes.Validate();
