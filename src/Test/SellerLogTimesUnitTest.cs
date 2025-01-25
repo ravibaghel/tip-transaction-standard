@@ -27,16 +27,16 @@ namespace Test
                 //TransactionType = TransactionType.New,
                 SourceName = "Test"
             };
-            sellerLogTimes.TransactionHeader = new TransactionHeader() { TransactionId = transactionIdentifier };
+            sellerLogTimes.TransactionHeader = new TransactionHeader() { TransactionId = transactionIdentifier, TipVersion = "6.0" };
             //sellerLogTimes.TimeStamp = DateTime.Now;
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
-            } };
+                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV" }
+            } ;
             //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             //sellerLogTimes.Validate();
-            Assert.That(sellerLogTimes.Errors[0], Is.EqualTo("tipVersion cannot be empty"));
+            Assert.That(sellerLogTimes.TransactionHeader.TipVersion, Is.EqualTo("6.0"));
         }
 
         [Test]
@@ -54,12 +54,11 @@ namespace Test
             sellerLogTimes.ExternalComment = "Test Comment";
             sellerLogTimes.MediaOutlets = new List<MediaOutlet>
             {
-                new MediaOutlet() { MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV", MediaOutletIds = new List<Identifier>{new Identifier { Id = "", SrcId = "src", SrcName = "Srcname", Version = "ver" } }
-            } };
+                new MediaOutlet() {MediaOutletIds = new List<Identifier>{new Identifier { Id = "validId", SrcId = "src", SrcName = "Srcname", Version = "ver" }} ,MediaOutletChannel = "RAVI", MediaOutletMarketName = "NYC", MediaOutletName = "RAVIC", MediaoutletReference = "RAVIR", MediaOutletType = "TV" }
+            };
             //sellerLogTimes.Error = new Error() { ErrorList = new Dictionary<string, string>() };
             //sellerLogTimes.Validate();
-            var json = "";// sellerLogTimes.ToJSON();
-            Assert.IsNotEmpty(json);
+            Assert.IsNotEmpty(ToJson(sellerLogTimes));
         }
 
         [Test]
@@ -75,6 +74,17 @@ namespace Test
 
             Assert.IsInstanceOf(typeof(SellerLogTimes),
                                 sellerLogTimes);
+        }
+
+        private string ToJson(object obj)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            };
+            options.Converters.Add(new JsonStringEnumConverter());
+            return JsonSerializer.Serialize(obj, options);
         }
     }
 }

@@ -21,10 +21,7 @@ namespace Baghel.TIP.Core.Model.Common
             get { return _broadcastDate; }
             set
             {
-                if (value.HasValue && value.Value.Kind != DateTimeKind.Utc)
-                {
-                    throw new ArgumentException("BroadcastDate must be in UTC.");
-                }
+               
                 _broadcastDate = value;
             }
         }
