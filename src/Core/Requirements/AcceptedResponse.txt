@@ -1,0 +1,3 @@
+﻿AcceptedResponse		TypeDef			Defines successful return from all APIs
+transactionId	Required		String	{"format":"uuid"}	
+timeStamp	Required		Date-time		

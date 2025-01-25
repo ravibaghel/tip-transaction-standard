@@ -1,0 +1,4 @@
+﻿Brand		TypeDef			Advertising brand information
+brandIds	Required	Array	Identifier	{"minItems":1} 	Array of identifier objects used to identify the brand id and its source system 
+brandName	Required		String	{"example": "Kona"} 	Brand Name
+brandReference	Optional		String		External brand reference name

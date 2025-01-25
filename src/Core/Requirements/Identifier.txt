@@ -1,0 +1,5 @@
+﻿Identifier 		TypeDef			Identifies ids and system source association
+id 	Required		String 		Identifier from the buyer or seller that indicates the id assignment 
+version	Optional		String 		Identifier from the buyer or seller that indicates the id assignment  version 
+srcId	Optional		String 		Optional identifier indicating the id of the system source providing the the id
+srcName	Required		String 		Name of the system source that is providing the id 

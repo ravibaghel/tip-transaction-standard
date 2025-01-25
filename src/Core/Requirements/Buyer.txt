@@ -1,0 +1,4 @@
+﻿Buyer		TypeDef			Buy-side organization information
+buyerIds	Required	Array	Identifier	{"minItems":1}	Array of identifier objects used to identify the buyer id and it source system
+buyerName	Required		String	{"example": "Canvas Worldwide. LLC"} 	Buying organization name  
+buyerReference	Optional		String		External buyer reference Name

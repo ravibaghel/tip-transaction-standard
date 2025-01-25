@@ -1,0 +1,33 @@
+﻿Unit		TypeDef			Unit detail information 
+unitId	Required		String		Seller generated unique number for unit (ID will likely change if unit is moved to another week during recon process).
+referenceIds	Required	Array	ReferenceId	{"minItems":1}	Array of ReferenceId objects containing the order id references; may also contain originating RFP and Proposal id and source references 
+lineReferences	Required	Array	Identifier		Array of identifier objects to identify a line id and system source; note- once the identifier object has been adopted the goal is to remove existing lineNum and lineReference
+cpeCode	Optional	Object	CpeCode		
+buyer	Optional	Object	Buyer		
+advertiser	Required	Object	Advertiser		
+brand	Optional	Object	Brand		
+product	Required	Object	Product		
+salesElementHeader	Required	Object	SalesElementHeader		
+program	Optional		String		This indicates the program the spot aired in -  'as-aired' information 
+daypart	Optional		String		This indicates the daypart the spot aired in -  'as-aired' information 
+inventoryType	Optional		String		Type of advertising such as a commercial, billboard or other types of advertisement
+linkType	Optional		LinkType		
+isMakegood 	Optional		Boolean		"Indicates if the spot is a makegood"
+isAdu	Optional		Boolean		Audience Deficiency Unit; Units of commercial advertising inventory made available to advertisers as fulfillment for the inventory the advertisers purchased that ran in programs that under-delivered on contracted audience demographic ratings
+preemptUnitIds	Optional	Array	String		ArrayList of the 'original' preempted unit being resolved when the isMakegood indicator is 'Y';  a makegood unit may be resolved by one too many preempt spots 
+isBonus 	Optional		Boolean		$0 (i.e., free) ad impressions/pricing that a publisher includes with paid media to maximize the overall proposal/order
+airedLength	Required		Integer		Length of commercial unit
+bookedLength	Optional		Integer		Actual length of commerical unit 
+rate	Optional		Float		Gross unit rate 
+creative 	Optional		Creative		
+status	Required		Enum	Aired, Scheduled, No Run, Finalized, Not Scheduled, Preempted	"Indicated the airing status for the spot 
+Aired  = 'as-aired' reconciliation for the spot is complete
+No Run = spot either did not run or didn't run as contracted when the broadcast log was played out 
+Scheduled  = spot is placed on a pre log that has not yet been played out
+Finalized = spot is placed on a log that is in a 'final status' and ready to be played out and the spot is locked from edits
+Not Scheduled = spot has not yet been placed on a future broadcast log
+Preempted = spot has been removed from a future broadcast log; the buyer will be offered a makegood or issued a credit"
+isCredit	Optional		Boolean		Indicate if the spot was issued a credit due to a discrepancy
+timePeriods	Optional	Array	TimePeriod		Array of TimePeriod objects indicating SalesElement ordered day and time period constraints 
+dateTime	Optional	Object	DateTime		Not required when unit's status is "No Run"
+childUnits	Optional	Array	ChildUnit		Array of ChildUnit objects

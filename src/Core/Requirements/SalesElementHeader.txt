@@ -1,0 +1,5 @@
+﻿SalesElementHeader		TypeDef			Sales element header information
+mediaOutletId	Required		String		mediaOutletId associated with the SalesElement 
+salesElementName	Required		String	{"example": "Primetime"}	SalesElement name; this may be a program, daypart name or another type of sales element 
+salesElementId	Required		String		SaleElement identifier 
+salesElementType	Required		Enum	Time-specific, Program, Audience, Package	Indicates the type of SalesElement

@@ -1,0 +1,4 @@
+﻿Product		TypeDef			Product category information
+productIds	Required	Array	Identifier	{"minItems":1}	Array of identifier objects used to identify the product id and its source system
+productName	Required		String	{"example": "Automobile"} 	Product name
+productReference	Optional		String		External product reference name

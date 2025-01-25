@@ -1,0 +1,4 @@
+﻿Error		TypeDef			Defines errors returned from all APIs
+errorCode	Required		Integer	{"example": 400}	
+errorMessage	Required		String	{"example": "Bad Request"}	
+errorList 	Optional	Dictionary	String	{"example": {"startDate": "Invalid DateFormat", "netCost":"Value Can Not be Negative"}}	

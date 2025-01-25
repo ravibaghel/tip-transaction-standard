@@ -1,0 +1,13 @@
+﻿ChildUnit		TypeDef			Child unit details for footprint unit to support Audience Network, Diginet or other forms of "child" units
+unitId	Required		String		Seller generated identifier for the child spot; conditional when there is a 'parent' unit is sold as a footprint 
+salesElementHeader	Required	Object	SalesElementHeader		
+rate	Optional		Float		Gross unit rate 
+creative 	Optional		Creative		Array of identifier objects containing the creative information; at  least one identifier object must be provided if spot status is equal to 'Aired' or 'Finalized'
+status	Conditional		Enum	Aired, Scheduled, No Run, Finalized, Not Scheduled, Preempted	"Indicated the airing status for the spot - 
+Aired  = 'as-aired' reconciliation for the spot is complete
+No Run = spot either did not run or didn't run as contracted when the broadcast log was played out 
+Scheduled  = spot is placed on a pre log that has not yet been played out
+Finalized = spot is placed on a log that is in a 'final status' and ready to be played out and the spot is locked from edits
+Not Scheduled = spot has not yet been placed on a future broadcast log
+Preempted = spot has been removed from a future broadcast log; the buyer will be offered a makegood or issued a credit"
+dateTime	Conditional	Object	DateTime		Required if the child's unit is equal to "Aired" 

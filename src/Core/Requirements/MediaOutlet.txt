@@ -1,0 +1,7 @@
+﻿MediaOutlet		TypeDef			Linear broadcast television or non-linear sell-side service
+mediaOutletIds	Required	Array	Identifier	{"minItems":1}	Array of identifier objects used to identify the mediaOutletId and its source system
+mediaOutletName	Required		String		Station, network name or entity associated to mediaOutletId
+mediaOutletType	Required		String	{"example": "Local TV"} 	Indicates the type of media; for example Local TV, Diginet TV, National Cable TV, Local Cable TV, Video Streaming Service, Satellite, Website, App, Audio Streaming Service, Radio Station, Unwired, Parent 
+mediaOutletChannel	Optional		String	{"example": "KHOU-TV"} 	Station or network station identification (Channel)
+mediaOutletMarketName	Optional		String	{"example": "Houston, TX"} 	Media market name such as the DMA or region 
+mediaOutletReference	Optional		String		External mediaoutlet reference name 

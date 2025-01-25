@@ -1,0 +1,5 @@
+﻿Creative		TypeDef			Object representing the creative
+ids	Required	Array	Identifier		UniqueID from the seller of the Creative [who assigns this in the process]
+name	Optional		String	{nullable:True}	Name of the creative
+status	Optional		Enum	Not Final, Final, On-Hand	
+length	Optional		Integer		Length (in seconds) of the Creative excluding slate

@@ -1,0 +1,18 @@
+﻿TimePeriod		TypeDef			Combines date window, DOW and time window objects
+dateWindow	Required		DateWindow		
+DOW	Required		DayOfWeek		
+timeWindow	Optional		TimeWindow		
+DateWindow		TypeDef			Start and end dates 
+startDate	Required		Date		Start date
+endDate	Optional 		Date		End date
+TimeWindow		TypeDef			Start and end times
+startTime	Required		Time		Start time, indicates the starting time for the period. Time is considered local to the mediaoutlet. Using military time HH:MM:SS
+endTime	Optional 		Time		End time, indicates the ending time for the period. Time is interpreted based on the local timezone of the mediaoutlet. Using military time HH:MM:SS
+DayOfWeek		TypeDef			Valid days of week
+isMonday	Required		Boolean		True/False
+isTuesday	Required		Boolean		True/False
+isWednesday	Required		Boolean		True/False
+isThursday	Required		Boolean		True/False
+isFriday	Required		Boolean		True/False
+isSaturday	Required		Boolean		True/False
+isSunday	Required		Boolean		True/False

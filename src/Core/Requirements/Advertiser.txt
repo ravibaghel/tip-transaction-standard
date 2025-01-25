@@ -1,0 +1,4 @@
+﻿Advertiser		TypeDef			Advertiser information
+advertiserIds	Required	Array	Identifier	{"minItems":1}	Array of identifier objects used to identify the advertiser id and its source system 
+advertiserName	Required		String	{"example": "Hyundai"} 	Advertiser name
+advertiserReference	Optional		String		External advertiser reference to support data mapping differences between systems 

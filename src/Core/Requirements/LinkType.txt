@@ -1,0 +1,4 @@
+﻿LinkType		TypeDef			"Linking of matching or related commercials "
+linkType	Required		Enum	Billboard,Piggyback, Bookend, Sandwich, Donut, Sponsorship, Package	Indicates the link constraint between two or more units (spots)
+linkNum	Optional		Integer		Unique number to communicate the association of two or more units within a link type
+linkSeq	Optional		Integer		Airing sequential order for the units linked together such as A or B, etc. 

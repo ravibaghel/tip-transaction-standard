@@ -1,0 +1,4 @@
+﻿CpeCode		TypeDef			Packages the buyer's client code, product code and estimate codes
+clientCode	Optional		String	{"example":"3LM"}	Client code provided from the buyer
+productCode	Optional		String	{"example":"AUTO"}	Product code provided from the buyer
+estimateCode	Optional		String	{"example":"AU-12345"}	Estimate code provided from the buyer

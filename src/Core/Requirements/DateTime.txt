@@ -1,0 +1,3 @@
+﻿DateTime		TypeDef			Broadcast date and broadcast time used in Logtimes & Invoices
+broadcastDate	Optional		Date		Broadcast date on which the unit aired/scheduled; this is not a calendar date
+calendarDateTime	Optional		Date-time		Calendar date and time on which the unit aired/scheduled. Time is interpreted based on the local timezone of the mediaoutlet using military date time YYYY-MM-DDTHH:MM:SS
