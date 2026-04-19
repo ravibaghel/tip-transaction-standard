@@ -1,0 +1,24 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: RFPS
+paths:
+  /buyer/rfps:
+    post:
+      operationId: BuyerRFPS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerRFPSRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerRFPSRequest"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    BuyerRFPSRequest:
+      type: object

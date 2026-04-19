@@ -1,5 +1,7 @@
 using FluentAssertions;
+using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Serialization;
 using Xunit;
 
@@ -43,5 +45,84 @@ public sealed class SerializationTests
         model.Frequency!.Every.Should().Be(Tip.TransactionStandard.Contracts.Common.FrequencyEvery.WhenAvailable);
         model.Statuses.Should().Contain(Tip.TransactionStandard.Contracts.Common.UnitStatus.Aired);
         model.ReferenceIds.Single().ReferenceVersionId.Should().Be("0");
+    }
+
+    [Fact]
+    public void Buyer_rfps_json_fixture_deserializes_and_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerRFPSNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerRFPSRequest>(payload);
+        var serialized = TipPayloadSerializer.SerializeJson(model);
+
+        model.Currency.Should().Be(Tip.TransactionStandard.Contracts.Common.CurrencyCode.Usd);
+        model.TimePeriodPreferences.Should().HaveCount(1);
+        model.CampaignGoals.Single().DistributionType.Should().Be(Tip.TransactionStandard.Contracts.Common.CampaignGoalDistributionType.MediaOutletType);
+        serialized.Should().Contain("\"currency\": \"USD\"");
+    }
+
+    [Fact]
+    public void Buyer_rfps_xml_serialization_uses_tip_namespace()
+    {
+        var model = new BuyerRFPSRequest
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-07-21T17:32:28Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+                    TransactionType = TransactionType.New,
+                    SourceId = "ABC-1234",
+                    SourceName = "TIPApi",
+                },
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "KHOU-TV",
+                    ReferenceSourceId = "string",
+                    ReferenceType = ReferenceType.Rfp,
+                    Value = "REF-1234",
+                },
+            ],
+            DateSubmitted = "2021-05-20",
+            Advertiser = new Advertiser
+            {
+                AdvertiserIds = [new Identifier { Id = "ADV-143", SourceId = "XBuy-1234", SourceName = "XVEN Buyer", Version = "0" }],
+                AdvertiserName = "Hyundai",
+            },
+            Contacts =
+            [
+                new Contact
+                {
+                    ContactIds = [new Identifier { Id = "CNT-1234", SourceId = "ABC-1234", SourceName = "TIPApi", Version = "0" }],
+                    Email = "john.doe@example.com",
+                },
+            ],
+            TimePeriodPreferences =
+            [
+                new TimePeriod
+                {
+                    DateWindow = new DateWindow
+                    {
+                        StartDate = "2021-05-20",
+                        EndDate = "2021-07-20",
+                    },
+                    DOW = new DayOfWeekSelection
+                    {
+                        IsMonday = true,
+                    },
+                },
+            ],
+        };
+
+        var serialized = TipPayloadSerializer.SerializeXml(model);
+
+        serialized.Should().Contain("<BuyerRFPS");
+        serialized.Should().Contain("https://tip.schemas.org/v6.0.0");
+        serialized.Should().Contain("<dateSubmitted>2021-05-20</dateSubmitted>");
     }
 }

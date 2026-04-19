@@ -217,3 +217,190 @@ public enum InstructionActionType
     [XmlEnum("Cancel")]
     Cancel,
 }
+
+public enum CurrencyCode
+{
+    [EnumMember(Value = "USD")]
+    [XmlEnum("USD")]
+    Usd,
+    [EnumMember(Value = "CAD")]
+    [XmlEnum("CAD")]
+    Cad,
+    [EnumMember(Value = "EUR")]
+    [XmlEnum("EUR")]
+    Eur,
+    [EnumMember(Value = "GBP")]
+    [XmlEnum("GBP")]
+    Gbp,
+    [EnumMember(Value = "MXN")]
+    [XmlEnum("MXN")]
+    Mxn,
+    [EnumMember(Value = "AUD")]
+    [XmlEnum("AUD")]
+    Aud,
+}
+
+public enum BudgetType
+{
+    [EnumMember(Value = "DMA")]
+    [XmlEnum("DMA")]
+    Dma,
+    [EnumMember(Value = "MediaOutlet")]
+    [XmlEnum("MediaOutlet")]
+    MediaOutlet,
+    [EnumMember(Value = "MediaType")]
+    [XmlEnum("MediaType")]
+    MediaType,
+}
+
+public enum AudienceRatingSource
+{
+    [EnumMember(Value = "Nielsen")]
+    [XmlEnum("Nielsen")]
+    Nielsen,
+    [EnumMember(Value = "ComScore")]
+    [XmlEnum("ComScore")]
+    ComScore,
+    [EnumMember(Value = "First-Party")]
+    [XmlEnum("First-Party")]
+    FirstParty,
+    [EnumMember(Value = "Distributor")]
+    [XmlEnum("Distributor")]
+    Distributor,
+    [EnumMember(Value = "Licensed")]
+    [XmlEnum("Licensed")]
+    Licensed,
+}
+
+public enum AudienceRatingStream
+{
+    [EnumMember(Value = "Program Live")]
+    [XmlEnum("ProgramLive")]
+    ProgramLive,
+    [EnumMember(Value = "Commercial Ratings Live")]
+    [XmlEnum("CommercialRatingsLive")]
+    CommercialRatingsLive,
+    [EnumMember(Value = "Commercial Rating Live+3")]
+    [XmlEnum("CommercialRatingLive+3")]
+    CommercialRatingLivePlus3,
+    [EnumMember(Value = "Commercial Rating Live+7")]
+    [XmlEnum("CommercialRatingLive+7")]
+    CommercialRatingLivePlus7,
+}
+
+public enum FrequencyCappingPeriod
+{
+    [EnumMember(Value = "Minute")]
+    [XmlEnum("Minute")]
+    Minute,
+    [EnumMember(Value = "Day")]
+    [XmlEnum("Day")]
+    Day,
+    [EnumMember(Value = "Week")]
+    [XmlEnum("Week")]
+    Week,
+    [EnumMember(Value = "Month")]
+    [XmlEnum("Month")]
+    Month,
+    [EnumMember(Value = "Hour")]
+    [XmlEnum("Hour")]
+    Hour,
+    [EnumMember(Value = "Site Session")]
+    [XmlEnum("SiteSession")]
+    SiteSession,
+    [EnumMember(Value = "Order")]
+    [XmlEnum("Order")]
+    Order,
+    [EnumMember(Value = "Asset")]
+    [XmlEnum("Asset")]
+    Asset,
+}
+
+public enum GuidelineType
+{
+    [EnumMember(Value = "Content")]
+    [XmlEnum("Content")]
+    Content,
+    [EnumMember(Value = "Program")]
+    [XmlEnum("Program")]
+    Program,
+    [EnumMember(Value = "MPAA")]
+    [XmlEnum("MPAA")]
+    Mpaa,
+    [EnumMember(Value = "Rating")]
+    [XmlEnum("Rating")]
+    Rating,
+    [EnumMember(Value = "Site Category")]
+    [XmlEnum("SiteCategory")]
+    SiteCategory,
+    [EnumMember(Value = "Genre")]
+    [XmlEnum("Genre")]
+    Genre,
+    [EnumMember(Value = "Media Outlet Type")]
+    [XmlEnum("MediaOutletType")]
+    MediaOutletType,
+}
+
+public enum IncludeOrExclude
+{
+    [EnumMember(Value = "Include")]
+    [XmlEnum("Include")]
+    Include,
+    [EnumMember(Value = "Exclude")]
+    [XmlEnum("Exclude")]
+    Exclude,
+}
+
+public enum CampaignGoalDistributionType
+{
+    [EnumMember(Value = "Media Outlet Type")]
+    [XmlEnum("MediaOutletType")]
+    MediaOutletType,
+    [EnumMember(Value = "Daypart")]
+    [XmlEnum("Daypart")]
+    Daypart,
+    [EnumMember(Value = "Market")]
+    [XmlEnum("Market")]
+    Market,
+    [EnumMember(Value = "Unit Length")]
+    [XmlEnum("UnitLength")]
+    UnitLength,
+    [EnumMember(Value = "AddedValue")]
+    [XmlEnum("AddedValue")]
+    AddedValue,
+    [EnumMember(Value = "Quarter")]
+    [XmlEnum("Quarter")]
+    Quarter,
+    [EnumMember(Value = "Month")]
+    [XmlEnum("Month")]
+    Month,
+    [EnumMember(Value = "Week")]
+    [XmlEnum("Week")]
+    Week,
+}
+
+public enum CampaignGoalDistributionMethod
+{
+    [EnumMember(Value = "Impressions")]
+    [XmlEnum("Impressions")]
+    Impressions,
+    [EnumMember(Value = "GRPs")]
+    [XmlEnum("GRPs")]
+    Grps,
+    [EnumMember(Value = "Units")]
+    [XmlEnum("Units")]
+    Units,
+    [EnumMember(Value = "Budget")]
+    [XmlEnum("Budget")]
+    Budget,
+}
+
+public enum CampaignGoalDistribution
+{
+    [EnumMember(Value = "Percentage")]
+    [XmlEnum("Percentage")]
+    Percentage,
+    [EnumMember(Value = "Exact Value")]
+    [XmlEnum("ExactValue")]
+    ExactValue,
+}

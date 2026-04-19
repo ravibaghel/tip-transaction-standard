@@ -8,6 +8,7 @@ Implemented in this library today:
 - `POST /buyer/logtimes/subscription`
 - `POST /buyer/commercialInstructions`
 - `POST /seller/commercialInstructions`
+- `POST /buyer/rfps`
 
 ## Remaining endpoint families from `tip-initiative-apis` `develop`
 
@@ -20,21 +21,19 @@ Implemented in this library today:
 - `makegoods`
 - `orders`
 - `proposal`
-- `rfps`
 - `sellerPoliticalCompetitives`
 
 ## Recommended implementation order
 
 1. `orders`
 2. `proposal`
-3. `rfps`
-4. `inventoryAvails`
-5. `invoice`
-6. `makegoods`
-7. `creativeAssets`
-8. `impressionssub`
-9. `buyerAudiences` and `sellerAudiences`
-10. `sellerPoliticalCompetitives`
+3. `inventoryAvails`
+4. `invoice`
+5. `makegoods`
+6. `creativeAssets`
+7. `impressionssub`
+8. `buyerAudiences` and `sellerAudiences`
+9. `sellerPoliticalCompetitives`
 
 ## Notes from the TIP implementation guides
 
