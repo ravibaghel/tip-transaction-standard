@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
+using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.LogTimes;
 using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
@@ -73,6 +74,19 @@ public sealed class ValidationTests
         var issues = TipValidator.ValidateObject(request);
 
         issues.Should().Contain(issue => issue.Path.Contains("OrderBookedDate") && issue.Message.Contains("valid ISO date"));
+    }
+
+    [Fact]
+    public void Invalid_inventory_avails_payload_reports_paths()
+    {
+        var request = CreateValidSellerInventoryAvailsRequest();
+        request.DateSubmitted = "bad-date";
+        request.SalesElements[0].SalesElementInventorys[0].SalesElementInventoryDates[0].InventoryAvails = -1;
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("DateSubmitted") && issue.Message.Contains("valid ISO date"));
+        issues.Should().Contain(issue => issue.Path.Contains("InventoryAvails") && issue.Message.Contains("zero or greater"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
@@ -404,6 +418,73 @@ public sealed class ValidationTests
                     MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
                     MediaOutletName = "MBLTV - My Best Local TV Station",
                     MediaOutletType = "Local TV",
+                },
+            ],
+        };
+
+    private static SellerInventoryAvailsRequest CreateValidSellerInventoryAvailsRequest() =>
+        new()
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-05-06T18:32:44.757Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    TransactionType = TransactionType.New,
+                    SourceId = "YSELL-1234",
+                    SourceName = "YSELL Seller",
+                },
+            },
+            DateSubmitted = "2021-05-06",
+            IsPolitical = false,
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "XVEN-1234", SourceName = "XVEN Buyer", Version = "0" }],
+                    MediaOutletName = "KHOU-TV",
+                    MediaOutletType = "Local TV",
+                },
+            ],
+            AvailWindow = new DateWindow
+            {
+                StartDate = "2021-08-06",
+                EndDate = "2021-08-20",
+            },
+            SalesElements =
+            [
+                new SalesElement
+                {
+                    SalesElementHeader = new SalesElementHeader
+                    {
+                        MediaOutletId = "YSELL-1234",
+                        SalesElementId = "string",
+                        SalesElementName = "Primetime",
+                        SalesElementType = SalesElementType.TimeSpecific,
+                    },
+                    SalesElementInventorys =
+                    [
+                        new SalesElementInventory
+                        {
+                            InventoryType = "Commercial",
+                            SalesElementInventoryDates =
+                            [
+                                new SalesElementInventoryDate
+                                {
+                                    DateType = DateType.Day,
+                                    CalendarType = CalendarType.Broadcast,
+                                    DateWindow = new DateWindow
+                                    {
+                                        StartDate = "2021-08-06",
+                                        EndDate = "2021-08-20",
+                                    },
+                                    InventoryAvails = 0,
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         };

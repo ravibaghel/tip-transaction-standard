@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
+using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.LogTimes;
 using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
@@ -250,5 +251,29 @@ public sealed class SerializationTests
         model.Comments.Should().Be("Appreciate your business");
         xml.Should().Contain("<SellerOrders");
         xml.Should().Contain("https://tip.schemas.org/v6.0.0");
+    }
+
+    [Fact]
+    public void Buyer_inventory_avails_subscription_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerInventoryAvailsSubscriptionNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerInventoryAvailsSubscriptionRequest>(payload);
+
+        model.IsPolitical.Should().BeFalse();
+        model.PricingMetricOptions.Should().Contain(PricingMetricOptionType.Cpm);
+        model.StartDate.Should().NotBeNull();
+    }
+
+    [Fact]
+    public void Seller_inventory_avails_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerInventoryAvailsNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerInventoryAvailsRequest>(payload);
+
+        model.DateSubmitted.Should().Be("2021-05-06");
+        model.SalesElements.Should().HaveCount(1);
+        model.SalesElements.Single().SalesElementInventorys.Single().InventoryType.Should().Be("Commercial");
     }
 }

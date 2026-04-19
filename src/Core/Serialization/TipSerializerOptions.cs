@@ -14,6 +14,7 @@ public static class TipSerializerOptions
 
         options.Converters.Add(new EnumMemberJsonConverterFactory());
         options.Converters.Add(new FlexibleStringJsonConverter());
+        options.Converters.Add(new DynamicOrDateJsonConverter());
         return options;
     }
 }

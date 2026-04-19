@@ -617,3 +617,25 @@ public enum CalendarType
     [XmlEnum("Calendar")]
     Calendar,
 }
+
+public enum DynamicDateOffsetType
+{
+    [EnumMember(Value = "Hour")]
+    [XmlEnum("Hour")]
+    Hour,
+    [EnumMember(Value = "Day")]
+    [XmlEnum("Day")]
+    Day,
+    [EnumMember(Value = "Week")]
+    [XmlEnum("Week")]
+    Week,
+    [EnumMember(Value = "Month")]
+    [XmlEnum("Month")]
+    Month,
+    [EnumMember(Value = "Quarter")]
+    [XmlEnum("Quarter")]
+    Quarter,
+    [EnumMember(Value = "Year")]
+    [XmlEnum("Year")]
+    Year,
+}

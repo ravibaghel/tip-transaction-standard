@@ -1,0 +1,41 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: Inventory Avails
+paths:
+  /buyer/inventoryAvails/subscription:
+    post:
+      operationId: BuyerInventoryAvailsSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerInventoryAvailsSubscriptionRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerInventoryAvailsSubscriptionRequest"
+      responses:
+        "201":
+          description: Created
+  /seller/inventoryAvails:
+    post:
+      operationId: SellerInventoryAvails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerInventoryAvailsRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerInventoryAvailsRequest"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    BuyerInventoryAvailsSubscriptionRequest:
+      type: object
+    SellerInventoryAvailsRequest:
+      type: object

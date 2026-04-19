@@ -70,4 +70,21 @@ public sealed class OpenApiTests
         seller.OperationId.Should().Be("SellerOrders");
         seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
     }
+
+    [Fact]
+    public void Inventory_avails_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "inventoryAvails.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        var buyer = document.Paths["/buyer/inventoryAvails/subscription"].Operations[OperationType.Post];
+        buyer.OperationId.Should().Be("BuyerInventoryAvailsSubscription");
+        buyer.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+
+        var seller = document.Paths["/seller/inventoryAvails"].Operations[OperationType.Post];
+        seller.OperationId.Should().Be("SellerInventoryAvails");
+        seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+    }
 }

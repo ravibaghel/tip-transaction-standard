@@ -1,0 +1,52 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.0.0",
+    "transactionId": {
+      "transactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "transactionType": "New",
+      "sourceId": "XVEN-1234",
+      "sourceName": "XVEN Buyer"
+    },
+    "timeStamp": "2021-05-06T18:27:49.064Z"
+  },
+  "name": "Twice a Month Inventory Avails for next 4 weeks from reporting date",
+  "mediaOutlets": [
+    {
+      "mediaOutletIds": [
+        {
+          "id": "KHOU-TV",
+          "version": "0",
+          "srcId": "XVEN-1234",
+          "srcName": "XVEN Buyer"
+        }
+      ],
+      "mediaOutletName": "string",
+      "mediaOutletType": "Local TV",
+      "mediaOutletChannel": "KHOU-TV",
+      "mediaOutletMarketName": "Houston, TX"
+    }
+  ],
+  "buyer": {
+    "buyerIds": [
+      {
+        "id": "XVEN-1234",
+        "version": "0",
+        "srcId": "XVEN-1234",
+        "srcName": "XVEN Buyer"
+      }
+    ],
+    "buyerName": "Canvas Worldwide. LLC"
+  },
+  "isPolitical": false,
+  "pricingMetricOptions": [
+    "CPM"
+  ],
+  "stratDate": {
+    "offsetType": "Week",
+    "offset": 0
+  },
+  "endDate": {
+    "offsetType": "Week",
+    "offset": 4
+  }
+}

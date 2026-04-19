@@ -1,0 +1,96 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.0.0",
+    "transactionId": {
+      "transactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "transactionType": "New",
+      "sourceId": "YSELL-1234",
+      "sourceName": "YSELL Seller"
+    },
+    "timeStamp": "2021-05-06T18:32:44.757Z"
+  },
+  "dateSubmitted": "2021-05-06",
+  "isPolitical": false,
+  "mediaOutlets": [
+    {
+      "mediaOutletIds": [
+        {
+          "id": "KHOU-TV",
+          "version": "0",
+          "srcId": "XVEN-1234",
+          "srcName": "XVEN Buyer"
+        }
+      ],
+      "mediaOutletName": "KHOU-TV",
+      "mediaOutletType": "Local TV",
+      "mediaOutletChannel": "KHOU-TV",
+      "mediaOutletMarketName": "Houston, TX"
+    }
+  ],
+  "availWindow": {
+    "startDate": "2021-08-06",
+    "endDate": "2021-08-20"
+  },
+  "salesElements": [
+    {
+      "salesElementHeader": {
+        "mediaOutletId": "YSELL-1234",
+        "salesElementName": "Primetime",
+        "salesElementId": "string",
+        "salesElementType": "Time-specific"
+      },
+      "timePeriods": [
+        {
+          "dateWindow": {
+            "startDate": "2021-08-06",
+            "endDate": "2021-08-20"
+          },
+          "DOW": {
+            "isMonday": true,
+            "isTuesday": true,
+            "isWednesday": true,
+            "isThursday": true,
+            "isFriday": true,
+            "isSaturday": true,
+            "isSunday": true
+          },
+          "timeWindow": {
+            "startTime": "09:00",
+            "endTime": "11:00"
+          }
+        }
+      ],
+      "devices": [
+        "PlayStation"
+      ],
+      "programs": [
+        "Mid Morning News"
+      ],
+      "salesElementInventorys": [
+        {
+          "inventoryType": "Commercial",
+          "linkType": {
+            "linkType": "Billboard",
+            "linkNum": 0,
+            "linkSeq": 0
+          },
+          "inventoryPosition": "First",
+          "inventoryLength": 30,
+          "salesElementInventoryDates": [
+            {
+              "dateType": "Day",
+              "calendarType": "Broadcast",
+              "dateWindow": {
+                "startDate": "2021-08-06",
+                "endDate": "2021-08-20"
+              },
+              "inventoryCapacity": 0,
+              "inventoryAvails": 0,
+              "inventoryMax": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
