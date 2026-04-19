@@ -114,4 +114,17 @@ public sealed class OpenApiTests
         document.Paths["/seller/makegood/offers"].Operations[OperationType.Post].OperationId.Should().Be("SellerMakegoodOffers");
         document.Paths["/buyer/makegood/offers"].Operations[OperationType.Post].OperationId.Should().Be("BuyerMakegoodOffers");
     }
+
+    [Fact]
+    public void Creative_assets_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "creativeAssets.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        var buyer = document.Paths["/buyer/creativeAssets"].Operations[OperationType.Post];
+        buyer.OperationId.Should().Be("BuyerCreativeAssets");
+        buyer.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+    }
 }

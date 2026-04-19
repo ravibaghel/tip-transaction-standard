@@ -1,0 +1,125 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.0.0",
+    "timeStamp": "2021-08-05T12:00:00Z",
+    "transactionId": {
+      "id": "8fcb5ae9-3038-49dc-8614-b2db302c808f",
+      "transactionType": "New",
+      "sourceId": "BUY-1234",
+      "sourceName": "TIP Buyer"
+    }
+  },
+  "creative": "Fall Promo Spot A",
+  "timePeriods": [
+    {
+      "dateWindow": {
+        "startDate": "2021-09-01",
+        "endDate": "2021-09-30"
+      },
+      "DOW": {
+        "isMonday": true,
+        "isTuesday": true,
+        "isWednesday": true,
+        "isThursday": true,
+        "isFriday": true
+      }
+    }
+  ],
+  "formats": [
+    {
+      "container": "MP4",
+      "video": "H.264",
+      "audio": [
+        "Stereo"
+      ],
+      "aspect": "16:9",
+      "resolution": "1920x1080",
+      "duration": "00:00:30"
+    }
+  ],
+  "mediaOutlets": [
+    {
+      "mediaOutletIds": [
+        {
+          "id": "KHOU-TV",
+          "sourceId": "KHOU-TV",
+          "sourceName": "KHOU-TV",
+          "version": "0"
+        }
+      ],
+      "mediaOutletName": "KHOU-TV",
+      "mediaOutletType": "Local TV"
+    }
+  ],
+  "deliveryDate": "2021-08-20",
+  "deliveryService": "Extreme Reach",
+  "buyer": {
+    "buyerIds": [
+      {
+        "id": "BUY-1234",
+        "sourceId": "BUY-1234",
+        "sourceName": "TIP Buyer",
+        "version": "0"
+      }
+    ],
+    "buyerName": "Canvas Worldwide. LLC"
+  },
+  "contacts": [
+    {
+      "contactIds": [
+        {
+          "id": "CNT-1234",
+          "sourceId": "BUY-1234",
+          "sourceName": "TIP Buyer",
+          "version": "0"
+        }
+      ],
+      "contactFirstName": "Alex",
+      "contactLastName": "Taylor",
+      "email": "alex.taylor@example.com"
+    }
+  ],
+  "advertiser": {
+    "advertiserIds": [
+      {
+        "id": "ADV-1234",
+        "sourceId": "BUY-1234",
+        "sourceName": "TIP Buyer",
+        "version": "0"
+      }
+    ],
+    "advertiserName": "Hyundai"
+  },
+  "brand": {
+    "brandIds": [
+      {
+        "id": "BRD-1234",
+        "sourceId": "BUY-1234",
+        "sourceName": "TIP Buyer",
+        "version": "0"
+      }
+    ],
+    "brandName": "Hyundai Sonata"
+  },
+  "product": {
+    "productIds": [
+      {
+        "id": "PROD-1234",
+        "sourceId": "BUY-1234",
+        "sourceName": "TIP Buyer",
+        "version": "0"
+      }
+    ],
+    "productName": "Automobile"
+  },
+  "guideLines": [
+    {
+      "guidelineType": "Program",
+      "excludeOrInclude": "Include",
+      "guidelines": [
+        "Morning News"
+      ]
+    }
+  ],
+  "comment": "Please deliver the final approved creative before trafficking."
+}

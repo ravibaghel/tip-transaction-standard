@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
+using Tip.TransactionStandard.Contracts.CreativeAssets;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
@@ -305,5 +306,20 @@ public sealed class SerializationTests
         sellerGuidelinesModel.MakegoodType.Should().Be(MakegoodType.ResolvePreemption);
         buyerGuidelinesModel.MakegoodGuidelines.Single().SalesElementEquivalent.Should().Be(SalesElementEquivalentType.SameSalesElement);
         sellerOffersModel.MakegoodDetails.Should().HaveCount(1);
+    }
+
+    [Fact]
+    public void Buyer_creative_assets_fixture_deserializes_and_xml_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerCreativeAssetsNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerCreativeAssetsRequest>(payload);
+        var xml = TipPayloadSerializer.SerializeXml(model);
+
+        model.Creative.Should().Be("Fall Promo Spot A");
+        model.Formats.Single().Container.Should().Be("MP4");
+        model.Guidelines.Should().HaveCount(1);
+        xml.Should().Contain("<BuyerCreativeAssets");
+        xml.Should().Contain("https://tip.schemas.org/v6.0.0");
     }
 }

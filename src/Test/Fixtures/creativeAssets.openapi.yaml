@@ -1,0 +1,24 @@
+openapi: 3.0.1
+info:
+  title: TIP Creative Assets
+  version: 6.0.0
+paths:
+  /buyer/creativeAssets:
+    post:
+      operationId: BuyerCreativeAssets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyerCreativeAssets'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/BuyerCreativeAssets'
+      responses:
+        '200':
+          description: Accepted
+components:
+  schemas:
+    BuyerCreativeAssets:
+      type: object

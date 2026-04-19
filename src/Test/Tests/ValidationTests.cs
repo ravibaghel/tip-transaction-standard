@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
+using Tip.TransactionStandard.Contracts.CreativeAssets;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
@@ -115,6 +116,54 @@ public sealed class ValidationTests
         var issues = TipValidator.ValidateObject(request);
 
         issues.Should().Contain(issue => issue.Path.Contains("DateSubmitted") && issue.Message.Contains("valid ISO date"));
+    }
+
+    [Fact]
+    public void Invalid_creative_assets_payload_reports_paths()
+    {
+        var request = new BuyerCreativeAssetsRequest
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-08-05T12:00:00Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "8fcb5ae9-3038-49dc-8614-b2db302c808f",
+                    TransactionType = TransactionType.New,
+                    SourceId = "BUY-1234",
+                    SourceName = "TIP Buyer",
+                },
+            },
+            Creative = "Fall Promo Spot A",
+            TimePeriods =
+            [
+                new TimePeriod
+                {
+                    DateWindow = new DateWindow
+                    {
+                        StartDate = "2021-09-01",
+                        EndDate = "2021-09-30",
+                    },
+                },
+            ],
+            DeliveryDate = "bad-date",
+            DeliveryService = "Extreme Reach",
+            Buyer = new Buyer
+            {
+                BuyerIds = [new Identifier { Id = "BUY-1234", SourceId = "BUY-1234", SourceName = "TIP Buyer", Version = "0" }],
+                BuyerName = "Canvas Worldwide. LLC",
+            },
+            Product = new Product
+            {
+                ProductIds = [new Identifier { Id = "PROD-1234", SourceId = "BUY-1234", SourceName = "TIP Buyer", Version = "0" }],
+                ProductName = "Automobile",
+            },
+        };
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("DeliveryDate") && issue.Message.Contains("valid ISO date"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
