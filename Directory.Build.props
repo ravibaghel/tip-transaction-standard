@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <RepositoryUrl>https://github.com/ravibaghel/tip-transaction-standard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/tip-initiative/tip-initiative-apis</PackageProjectUrl>
+    <PackageTags>TIP;OpenAPI;JSON;XML;Television;Advertising</PackageTags>
+    <Authors>Ravi Baghel</Authors>
+    <Company>Ravi Baghel</Company>
+    <Copyright>Copyright (c) Ravi Baghel</Copyright>
+  </PropertyGroup>
+</Project>

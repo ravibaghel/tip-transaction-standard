@@ -1,17 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Baghel.TIP.Core</AssemblyName>
-    <RootNamespace>Baghel.TIP.Core</RootNamespace>
-    <Company>Ravi Baghel</Company>
-    <Authors>Ravi Baghel</Authors>
-    <Title>TIP implementation in .NET</Title>
-    <Description>TIP implementation in .NET. </Description>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>Tip.TransactionStandard</AssemblyName>
+    <RootNamespace>Tip.TransactionStandard</RootNamespace>
+    <PackageId>Tip.TransactionStandard</PackageId>
+    <Title>TIP Transaction Standard for .NET</Title>
+    <Description>Contract-first TIP v6.0.0 models, validation, and JSON/XML serialization helpers for client and server development.</Description>
+    <PackageVersion>0.1.0</PackageVersion>
+    <PackageReleaseNotes>Initial contract-first rewrite focused on TIP logtimes and shared common contracts.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="API\" />
+    <Compile Include="Contracts\**\*.cs" />
+    <Compile Include="Serialization\**\*.cs" />
+    <Compile Include="Validation\**\*.cs" />
+    <Compile Include="Http\**\*.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
 </Project>

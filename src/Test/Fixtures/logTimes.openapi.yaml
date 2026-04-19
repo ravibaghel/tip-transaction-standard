@@ -1,0 +1,41 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: Logtimes
+paths:
+  /seller/logtimes:
+    post:
+      operationId: SellerLogtimes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerLogtimes"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerLogtimes"
+      responses:
+        "200":
+          description: OK
+  /buyer/logtimes/subscription:
+    post:
+      operationId: BuyerLogTimesSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerLogTimesSubscriptionRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerLogTimesSubscriptionRequest"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    SellerLogtimes:
+      type: object
+    BuyerLogTimesSubscriptionRequest:
+      type: object

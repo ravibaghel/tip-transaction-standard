@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>Tip.TransactionStandard.AspNetCore</AssemblyName>
+    <RootNamespace>Tip.TransactionStandard.AspNetCore</RootNamespace>
+    <PackageId>Tip.TransactionStandard.AspNetCore</PackageId>
+    <Title>TIP Transaction Standard ASP.NET Core</Title>
+    <Description>ASP.NET Core formatters and registration helpers for the TIP Transaction Standard package.</Description>
+    <PackageVersion>0.1.0</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="bin\**\*;obj\**\*" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
+</Project>
