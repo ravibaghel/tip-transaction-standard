@@ -9,6 +9,7 @@ Implemented in this library today:
 - `POST /buyer/commercialInstructions`
 - `POST /seller/commercialInstructions`
 - `POST /buyer/rfps`
+- `POST /seller/proposals`
 
 ## Remaining endpoint families from `tip-initiative-apis` `develop`
 
@@ -20,13 +21,12 @@ Implemented in this library today:
 - `invoice`
 - `makegoods`
 - `orders`
-- `proposal`
 - `sellerPoliticalCompetitives`
 
 ## Recommended implementation order
 
 1. `orders`
-2. `proposal`
+2. buyer `proposal` change/recall parity
 3. `inventoryAvails`
 4. `invoice`
 5. `makegoods`

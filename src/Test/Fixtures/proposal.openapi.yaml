@@ -1,0 +1,24 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: Proposals
+paths:
+  /seller/proposals:
+    post:
+      operationId: SellerProposals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerProposalsRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerProposalsRequest"
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    SellerProposalsRequest:
+      type: object

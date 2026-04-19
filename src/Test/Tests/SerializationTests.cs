@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Serialization;
 using Xunit;
@@ -124,5 +125,91 @@ public sealed class SerializationTests
         serialized.Should().Contain("<BuyerRFPS");
         serialized.Should().Contain("https://tip.schemas.org/v6.0.0");
         serialized.Should().Contain("<dateSubmitted>2021-05-20</dateSubmitted>");
+    }
+
+    [Fact]
+    public void Seller_proposals_json_fixture_deserializes_and_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerProposalsNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerProposalsRequest>(payload);
+        var serialized = TipPayloadSerializer.SerializeJson(model);
+
+        model.RevenueType.Should().Be(RevenueType.Cash);
+        model.MediaOutlets.Should().HaveCount(1);
+        model.SalesElements.Single().SalesElementTransactionInventorys.Single().SalesElementTransactionDates.Single().PricingMetric!.PricingMetricOption
+            .Should().Be(PricingMetricOptionType.Cpm);
+        serialized.Should().Contain("\"revenueType\": \"Cash\"");
+    }
+
+    [Fact]
+    public void Seller_proposals_xml_serialization_uses_tip_namespace()
+    {
+        var model = new SellerProposalsRequest
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-07-21T17:32:28Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+                    TransactionType = TransactionType.New,
+                    SourceId = "ABC-1234",
+                    SourceName = "TIPApi",
+                },
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "TIPApi",
+                    ReferenceSourceId = "ABC-1234",
+                    ReferenceType = ReferenceType.Proposal,
+                    Value = "PRP-1234",
+                },
+            ],
+            ExpirationDate = "2021-06-30",
+            Buyer = new Buyer
+            {
+                BuyerIds = [new Identifier { Id = "Buy-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                BuyerName = "Canvas Worldwide. LLC",
+            },
+            Commission = 10m,
+            Contacts =
+            [
+                new Contact
+                {
+                    ContactIds = [new Identifier { Id = "CNT-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    Email = "user@example.com",
+                },
+            ],
+            RevenueType = RevenueType.Cash,
+            BusinessType = "Linear",
+            IsEquivalized = true,
+            DateWindows =
+            [
+                new DateWindow
+                {
+                    StartDate = "2021-07-01",
+                    EndDate = "2021-09-21",
+                },
+            ],
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    MediaOutletName = "MBLTV - My Best Local TV Station",
+                    MediaOutletType = "Local TV",
+                },
+            ],
+        };
+
+        var serialized = TipPayloadSerializer.SerializeXml(model);
+
+        serialized.Should().Contain("<SellerProposals");
+        serialized.Should().Contain("https://tip.schemas.org/v6.0.0");
+        serialized.Should().Contain("<revenueType>Cash</revenueType>");
     }
 }

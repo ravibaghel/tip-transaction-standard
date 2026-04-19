@@ -404,3 +404,216 @@ public enum CampaignGoalDistribution
     [XmlEnum("ExactValue")]
     ExactValue,
 }
+
+public enum RevenueType
+{
+    [EnumMember(Value = "Cash")]
+    [XmlEnum("Cash")]
+    Cash,
+    [EnumMember(Value = "Barter")]
+    [XmlEnum("Barter")]
+    Barter,
+    [EnumMember(Value = "Trade")]
+    [XmlEnum("Trade")]
+    Trade,
+}
+
+public enum MarketScope
+{
+    [EnumMember(Value = "Local")]
+    [XmlEnum("Local")]
+    Local,
+    [EnumMember(Value = "National")]
+    [XmlEnum("National")]
+    National,
+}
+
+public enum BillingCalendarType
+{
+    [EnumMember(Value = "Broadcast")]
+    [XmlEnum("Broadcast")]
+    Broadcast,
+    [EnumMember(Value = "Calendar")]
+    [XmlEnum("Calendar")]
+    Calendar,
+    [EnumMember(Value = "Nielsen")]
+    [XmlEnum("Nielsen")]
+    Nielsen,
+}
+
+public enum BillingCycleType
+{
+    [EnumMember(Value = "Month")]
+    [XmlEnum("Month")]
+    Month,
+    [EnumMember(Value = "Quarter")]
+    [XmlEnum("Quarter")]
+    Quarter,
+    [EnumMember(Value = "Week")]
+    [XmlEnum("Week")]
+    Week,
+}
+
+public enum BillingGranularityType
+{
+    [EnumMember(Value = "Order")]
+    [XmlEnum("Order")]
+    Order,
+    [EnumMember(Value = "Line")]
+    [XmlEnum("Line")]
+    Line,
+    [EnumMember(Value = "Unit")]
+    [XmlEnum("Unit")]
+    Unit,
+}
+
+public enum CancellationTermType
+{
+    [EnumMember(Value = "Quarterly")]
+    [XmlEnum("Quarterly")]
+    Quarterly,
+    [EnumMember(Value = "Broadcast Date")]
+    [XmlEnum("BroadcastDate")]
+    BroadcastDate,
+}
+
+public enum PacingRuleType
+{
+    [EnumMember(Value = "Frontload")]
+    [XmlEnum("Frontload")]
+    Frontload,
+    [EnumMember(Value = "Even")]
+    [XmlEnum("Even")]
+    Even,
+    [EnumMember(Value = "Daily Fast ASAP")]
+    [XmlEnum("DailyFastASAP")]
+    DailyFastAsap,
+    [EnumMember(Value = "Daily Even")]
+    [XmlEnum("DailyEven")]
+    DailyEven,
+    [EnumMember(Value = "Flight ASAP")]
+    [XmlEnum("FlightASAP")]
+    FlightAsap,
+    [EnumMember(Value = "Flight Even")]
+    [XmlEnum("FlightEven")]
+    FlightEven,
+    [EnumMember(Value = "Flight Ahead")]
+    [XmlEnum("FlightAhead")]
+    FlightAhead,
+}
+
+public enum PacingRateType
+{
+    [EnumMember(Value = "Absolute")]
+    [XmlEnum("Absolute")]
+    Absolute,
+    [EnumMember(Value = "Percent")]
+    [XmlEnum("Percent")]
+    Percent,
+}
+
+public enum UniverseType
+{
+    [EnumMember(Value = "Market")]
+    [XmlEnum("Market")]
+    Market,
+    [EnumMember(Value = "Total US")]
+    [XmlEnum("TotalUS")]
+    TotalUs,
+    [EnumMember(Value = "Coverage")]
+    [XmlEnum("Coverage")]
+    Coverage,
+    [EnumMember(Value = "Addressable")]
+    [XmlEnum("Addressable")]
+    Addressable,
+}
+
+public enum AudienceMetricType
+{
+    [EnumMember(Value = "Impressions")]
+    [XmlEnum("Impressions")]
+    Impressions,
+    [EnumMember(Value = "Rating")]
+    [XmlEnum("Rating")]
+    Rating,
+    [EnumMember(Value = "GRPs")]
+    [XmlEnum("GRPs")]
+    Grps,
+    [EnumMember(Value = "VPVH")]
+    [XmlEnum("VPVH")]
+    Vpvh,
+    [EnumMember(Value = "Composition")]
+    [XmlEnum("Composition")]
+    Composition,
+}
+
+public enum PricingMetricOptionType
+{
+    [EnumMember(Value = "CPM")]
+    [XmlEnum("CPM")]
+    Cpm,
+    [EnumMember(Value = "CPP")]
+    [XmlEnum("CPP")]
+    Cpp,
+    [EnumMember(Value = "CPE")]
+    [XmlEnum("CPE")]
+    Cpe,
+    [EnumMember(Value = "CPA")]
+    [XmlEnum("CPA")]
+    Cpa,
+    [EnumMember(Value = "SPOT")]
+    [XmlEnum("SPOT")]
+    Spot,
+}
+
+public enum AudiencePricingMetricType
+{
+    [EnumMember(Value = "Selling")]
+    [XmlEnum("Selling")]
+    Selling,
+    [EnumMember(Value = "Actual")]
+    [XmlEnum("Actual")]
+    Actual,
+    [EnumMember(Value = "Projection")]
+    [XmlEnum("Projection")]
+    Projection,
+}
+
+public enum InventoryPositionType
+{
+    [EnumMember(Value = "First")]
+    [XmlEnum("First")]
+    First,
+    [EnumMember(Value = "Last")]
+    [XmlEnum("Last")]
+    Last,
+    [EnumMember(Value = "Middle")]
+    [XmlEnum("Middle")]
+    Middle,
+}
+
+public enum DateType
+{
+    [EnumMember(Value = "Day")]
+    [XmlEnum("Day")]
+    Day,
+    [EnumMember(Value = "Week")]
+    [XmlEnum("Week")]
+    Week,
+    [EnumMember(Value = "Month")]
+    [XmlEnum("Month")]
+    Month,
+    [EnumMember(Value = "Quarter")]
+    [XmlEnum("Quarter")]
+    Quarter,
+}
+
+public enum CalendarType
+{
+    [EnumMember(Value = "Broadcast")]
+    [XmlEnum("Broadcast")]
+    Broadcast,
+    [EnumMember(Value = "Calendar")]
+    [XmlEnum("Calendar")]
+    Calendar,
+}

@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Validation;
 using Xunit;
@@ -45,6 +46,21 @@ public sealed class ValidationTests
         issues.Should().Contain(issue => issue.Path.Contains("DateSubmitted") && issue.Message.Contains("valid ISO date"));
         issues.Should().Contain(issue => issue.Path.Contains("Budgets[0].BudgetAmount") && issue.Message.Contains("greater than zero"));
         issues.Should().Contain(issue => issue.Path.Contains("CampaignGoals[0].DistributionName"));
+    }
+
+    [Fact]
+    public void Invalid_proposal_payload_reports_paths()
+    {
+        var request = CreateValidProposalRequest();
+        request.ExpirationDate = "not-a-date";
+        request.SalesElements[0].SalesElementTransactionInventorys[0].InventoryLength = -1;
+        request.SalesElements[0].SalesElementTransactionInventorys[0].SalesElementTransactionDates[0].UnitCount = -3;
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("ExpirationDate") && issue.Message.Contains("valid ISO date"));
+        issues.Should().Contain(issue => issue.Path.Contains("InventoryLength") && issue.Message.Contains("zero or greater"));
+        issues.Should().Contain(issue => issue.Path.Contains("UnitCount") && issue.Message.Contains("zero or greater"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
@@ -204,6 +220,116 @@ public sealed class ValidationTests
                     DistributionValue = 60m,
                     DistributionOrder = 0,
                     DistributionOrderParent = 0,
+                },
+            ],
+        };
+
+    private static SellerProposalsRequest CreateValidProposalRequest() =>
+        new()
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-07-21T17:32:28Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+                    TransactionType = TransactionType.New,
+                    SourceId = "ABC-1234",
+                    SourceName = "TIPApi",
+                },
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "TIPApi",
+                    ReferenceSourceId = "ABC-1234",
+                    ReferenceType = ReferenceType.Rfp,
+                    Value = "REF-1234",
+                },
+            ],
+            ExpirationDate = "2021-06-30",
+            Buyer = new Buyer
+            {
+                BuyerIds = [new Identifier { Id = "Buy-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                BuyerName = "Canvas Worldwide. LLC",
+            },
+            Commission = 10m,
+            Contacts =
+            [
+                new Contact
+                {
+                    ContactIds = [new Identifier { Id = "CNT-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    Email = "user@example.com",
+                },
+            ],
+            RevenueType = RevenueType.Cash,
+            BusinessType = "Linear",
+            IsEquivalized = true,
+            DateWindows =
+            [
+                new DateWindow
+                {
+                    StartDate = "2021-07-01",
+                    EndDate = "2021-09-21",
+                },
+            ],
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    MediaOutletName = "MBLTV - My Best Local TV Station",
+                    MediaOutletType = "Local TV",
+                },
+            ],
+            SalesElements =
+            [
+                new SalesElementTransaction
+                {
+                    SalesElementHeader = new SalesElementHeader
+                    {
+                        MediaOutletId = "KHOU-TV",
+                        SalesElementId = "SL-1234",
+                        SalesElementName = "Primetime",
+                        SalesElementType = SalesElementType.TimeSpecific,
+                    },
+                    TimePeriods =
+                    [
+                        new TimePeriod
+                        {
+                            DateWindow = new DateWindow
+                            {
+                                StartDate = "2021-07-01",
+                                EndDate = "2021-09-21",
+                            },
+                            DOW = new DayOfWeekSelection { IsMonday = true },
+                        },
+                    ],
+                    SalesElementTransactionInventorys =
+                    [
+                        new SalesElementTransactionInventory
+                        {
+                            LineNum = "1",
+                            InventoryType = "Commercial",
+                            InventoryLength = 30,
+                            SalesElementTransactionDates =
+                            [
+                                new SalesElementTransactionDate
+                                {
+                                    DateType = DateType.Day,
+                                    CalendarType = CalendarType.Broadcast,
+                                    DateWindow = new DateWindow
+                                    {
+                                        StartDate = "2021-07-01",
+                                        EndDate = "2021-09-21",
+                                    },
+                                    UnitCount = 10,
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         };
