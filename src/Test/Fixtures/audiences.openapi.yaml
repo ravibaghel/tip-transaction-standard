@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: TIP Audiences
+  version: 6.0.0
+paths:
+  /buyer/audiences/subscription:
+    post:
+      operationId: BuyerAudiencesSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BuyerAudiencesSubscription'
+                - $ref: '#/components/schemas/CancelConfirmRecallReject'
+          application/xml:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BuyerAudiencesSubscription'
+                - $ref: '#/components/schemas/CancelConfirmRecallReject'
+      responses:
+        '201':
+          description: Created
+  /seller/audiences:
+    post:
+      operationId: SellerAudiences
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SellerAudiences'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SellerAudiences'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    BuyerAudiencesSubscription:
+      type: object
+    SellerAudiences:
+      type: object
+    CancelConfirmRecallReject:
+      type: object

@@ -144,4 +144,34 @@ public sealed class OpenApiTests
         seller.OperationId.Should().Be("SellerImpressionNotification");
         seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
     }
+
+    [Fact]
+    public void Audiences_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "audiences.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        var buyer = document.Paths["/buyer/audiences/subscription"].Operations[OperationType.Post];
+        buyer.OperationId.Should().Be("BuyerAudiencesSubscription");
+        buyer.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+
+        var seller = document.Paths["/seller/audiences"].Operations[OperationType.Post];
+        seller.OperationId.Should().Be("SellerAudiences");
+        seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+    }
+
+    [Fact]
+    public void Political_competitive_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "sellerPoliticalCompetitive.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        var seller = document.Paths["/seller/politicalCompetitive"].Operations[OperationType.Post];
+        seller.OperationId.Should().Be("SellerPoliticalCompetitive");
+        seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+    }
 }

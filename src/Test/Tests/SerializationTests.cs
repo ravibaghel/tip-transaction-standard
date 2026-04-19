@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Tip.TransactionStandard.Contracts.Audiences;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.CreativeAssets;
 using Tip.TransactionStandard.Contracts.Impressions;
@@ -7,6 +8,7 @@ using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
 using Tip.TransactionStandard.Contracts.Makegoods;
 using Tip.TransactionStandard.Contracts.Orders;
+using Tip.TransactionStandard.Contracts.PoliticalCompetitive;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Serialization;
@@ -347,6 +349,36 @@ public sealed class SerializationTests
         model.FilePrefix.Should().Be("ORD-0009123");
         model.Creatives.Single().Status.Should().Be(CreativeStatus.NotFinal);
         xml.Should().Contain("<SellerImpressionsNotificationRequest");
+        xml.Should().Contain("https://tip.schemas.org/v6.0.0");
+    }
+
+    [Fact]
+    public void Audience_fixtures_deserialize()
+    {
+        var buyerPayload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerAudiencesSubscriptionNew.json"));
+        var sellerPayload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerAudiencesNew.json"));
+
+        var buyerModel = TipPayloadSerializer.DeserializeJson<BuyerAudiencesSubscriptionRequest>(buyerPayload);
+        var sellerModel = TipPayloadSerializer.DeserializeJson<SellerAudiencesRequest>(sellerPayload);
+
+        buyerModel.Buyers.Should().HaveCount(1);
+        buyerModel.Advertisers.Should().HaveCount(1);
+        buyerModel.StartDate!.OffsetType.Should().Be(DynamicDateOffsetType.Day);
+        sellerModel.AudienceDetails.Should().HaveCount(1);
+        sellerModel.AudienceDetails.Single().UnitDetails.Single().ChildUnits.Should().HaveCount(1);
+    }
+
+    [Fact]
+    public void Seller_political_competitive_fixture_deserializes_and_xml_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerPoliticalCompetitiveNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerPoliticalCompetitivesRequest>(payload);
+        var xml = TipPayloadSerializer.SerializeXml(model);
+
+        model.PoliticalCompetitive.Single().State.Should().Be("TX");
+        model.PoliticalCompetitive.Single().PartyTag.Should().Be("Republican");
+        xml.Should().Contain("<SellerPoliticalCompetitives");
         xml.Should().Contain("https://tip.schemas.org/v6.0.0");
     }
 }

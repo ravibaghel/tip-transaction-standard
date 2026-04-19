@@ -23,17 +23,19 @@ Implemented in this library today:
 - `POST /buyer/creativeAssets`
 - `POST /buyer/impressions/subscription`
 - `POST /seller/impressions/notification`
+- `POST /buyer/audiences/subscription`
+- `POST /seller/audiences`
+- `POST /seller/politicalCompetitive`
 
 ## Remaining endpoint families from `tip-initiative-apis` `develop`
 
-- `buyerAudiences`
-- `sellerAudiences`
-- `sellerPoliticalCompetitives`
+None from the currently tracked `develop/endpoints` catalog.
 
 ## Recommended implementation order
 
-1. `buyerAudiences` and `sellerAudiences`
-2. `sellerPoliticalCompetitives`
+1. Expand response-model coverage across implemented families
+2. Add more XML round-trip fixtures from upstream examples
+3. Add package-level integration samples for ASP.NET Core server/client use
 
 ## Notes from the TIP implementation guides
 

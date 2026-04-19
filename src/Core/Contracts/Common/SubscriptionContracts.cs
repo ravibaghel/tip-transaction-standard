@@ -36,6 +36,10 @@ public sealed class Contact : ITipValidatable
     [XmlElement("addressLine1")]
     public string? AddressLine1 { get; set; }
 
+    [JsonPropertyName("addressLine2")]
+    [XmlElement("addressLine2")]
+    public string? AddressLine2 { get; set; }
+
     [JsonPropertyName("city")]
     [XmlElement("city")]
     public string? City { get; set; }

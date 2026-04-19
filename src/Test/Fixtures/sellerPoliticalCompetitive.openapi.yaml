@@ -1,0 +1,24 @@
+openapi: 3.0.1
+info:
+  title: TIP Seller Political Competitive
+  version: 6.1.0
+paths:
+  /seller/politicalCompetitive:
+    post:
+      operationId: SellerPoliticalCompetitive
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SellerPoliticalCompetitives'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SellerPoliticalCompetitives'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    SellerPoliticalCompetitives:
+      type: object

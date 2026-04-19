@@ -1,0 +1,96 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.1.0",
+    "transactionId": {
+      "transactionId": "7c55f1f6-b564-4bd2-b7bd-e4c4f8f1c951",
+      "transactionType": "New",
+      "sourceId": "SELL-1234",
+      "sourceName": "TIP Seller"
+    },
+    "timeStamp": "2021-10-15T12:00:00Z"
+  },
+  "externalComment": "Weekly political competitive file.",
+  "politicalCompetitive": [
+    {
+      "ids": [
+        {
+          "referenceSourceName": "TIP Seller",
+          "referenceSourceId": "SELL-1234",
+          "referenceSourceLookup": "line",
+          "referenceType": "Order",
+          "referenceId": "ORD-9001",
+          "referenceVersionId": "1",
+          "referenceName": "State Senate Flight"
+        }
+      ],
+      "lineNumber": [
+        {
+          "id": "LN-001",
+          "version": "0",
+          "srcId": "SELL-1234",
+          "srcName": "TIP Seller"
+        }
+      ],
+      "flightStart": "2021-10-01",
+      "flightEnd": "2021-10-31",
+      "advertiser": {
+        "ids": [
+          {
+            "id": "ADV-1",
+            "version": "0",
+            "srcId": "SELL-1234",
+            "srcName": "TIP Seller"
+          }
+        ],
+        "name": "Citizens for Smith",
+        "reference": "Campaign"
+      },
+      "agency": {
+        "ids": [
+          {
+            "id": "AGY-1",
+            "version": "0",
+            "srcId": "SELL-1234",
+            "srcName": "TIP Seller"
+          }
+        ],
+        "name": "Agency Partners"
+      },
+      "airingMediaOutlet": {
+        "mediaOutletIds": [
+          {
+            "id": "KHOU-TV",
+            "version": "0",
+            "srcId": "SELL-1234",
+            "srcName": "TIP Seller"
+          }
+        ],
+        "mediaOutletName": "KHOU-TV",
+        "mediaOutletType": "Local TV",
+        "mediaOutletChannel": "11.1",
+        "mediaOutletMarketName": "Houston, TX"
+      },
+      "adSeconds": 30,
+      "totalAdSeconds": 600,
+      "totalDollars": 25000.0,
+      "state": "TX",
+      "repFirm": {
+        "ids": [
+          {
+            "id": "REP-1",
+            "version": "0",
+            "srcId": "SELL-1234",
+            "srcName": "TIP Seller"
+          }
+        ],
+        "name": "Station Group Sales"
+      },
+      "partyTag": "Republican",
+      "candidateTag": "Jane Smith",
+      "electionTag": "Senate",
+      "raceTag": "General Election",
+      "targetAudienceTag": "Likely Voters",
+      "geoTargetTag": "TX-SEN"
+    }
+  ]
+}

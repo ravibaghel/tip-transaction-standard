@@ -85,6 +85,29 @@ public sealed class Buyer
     public string? BuyerReference { get; set; }
 }
 
+public sealed class Company
+{
+    [Required, MinLength(1)]
+    [JsonPropertyName("ids")]
+    [XmlArray("ids")]
+    [XmlArrayItem("identifier")]
+    public List<Identifier> Ids { get; set; } = [];
+
+    [Required]
+    [JsonPropertyName("name")]
+    [XmlElement("name")]
+    public string? Name { get; set; }
+
+    [JsonPropertyName("reference")]
+    [XmlElement("reference")]
+    public string? Reference { get; set; }
+
+    [JsonPropertyName("offices")]
+    [XmlArray("offices")]
+    [XmlArrayItem("item")]
+    public List<string> Offices { get; set; } = [];
+}
+
 public sealed class Product
 {
     [Required, MinLength(1)]

@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Tip.TransactionStandard.Contracts.Audiences;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.CreativeAssets;
 using Tip.TransactionStandard.Contracts.Impressions;
@@ -7,6 +8,7 @@ using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
 using Tip.TransactionStandard.Contracts.Makegoods;
 using Tip.TransactionStandard.Contracts.Orders;
+using Tip.TransactionStandard.Contracts.PoliticalCompetitive;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Validation;
@@ -237,6 +239,107 @@ public sealed class ValidationTests
 
         issues.Should().Contain(issue => issue.Path.Contains("ReportDate.StartDate") && issue.Message.Contains("valid ISO date"));
         issues.Should().Contain(issue => issue.Path.Contains("Chunks") && issue.Message.Contains("greater than zero"));
+    }
+
+    [Fact]
+    public void Invalid_audience_payload_reports_paths()
+    {
+        var request = new AudienceDetail
+        {
+            DetailType = "Unit-Based",
+            DateType = "Hour",
+            CalendarType = CalendarType.Broadcast,
+            DateWindow = new DateWindow
+            {
+                StartDate = "2021-07-15",
+                EndDate = "2021-07-15",
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "KHOU-TV",
+                    ReferenceSourceId = "string",
+                    ReferenceType = ReferenceType.Rfp,
+                    Value = "REF-1234",
+                },
+            ],
+            Advertiser = new Advertiser
+            {
+                AdvertiserIds = [new Identifier { Id = "string", SourceId = "string", SourceName = "string", Version = "string" }],
+                AdvertiserName = "Hyundai",
+            },
+            Product = new Product
+            {
+                ProductIds = [new Identifier { Id = "string", SourceId = "string", SourceName = "string", Version = "string" }],
+                ProductName = "Automobile",
+            },
+            SalesElementHeader = new SalesElementHeader
+            {
+                MediaOutletId = "string",
+                SalesElementName = "Primetime",
+                SalesElementId = "string",
+                SalesElementType = SalesElementType.TimeSpecific,
+            },
+            Length = -1,
+            UnitCount = -1,
+        };
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("Length") && issue.Message.Contains("zero or greater"));
+        issues.Should().Contain(issue => issue.Path.Contains("UnitCount") && issue.Message.Contains("zero or greater"));
+    }
+
+    [Fact]
+    public void Invalid_political_competitive_payload_reports_paths()
+    {
+        var request = new PoliticalCompetitiveDetail
+        {
+            Ids =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "TIP Seller",
+                    ReferenceSourceId = "SELL-1234",
+                    ReferenceType = ReferenceType.Order,
+                    Value = "ORD-9001",
+                },
+            ],
+            LineNumber = [new Identifier { Id = "LN-001", SourceId = "SELL-1234", SourceName = "TIP Seller", Version = "0" }],
+            FlightStart = "bad-date",
+            FlightEnd = "2021-10-31",
+            Advertiser = new Company
+            {
+                Ids = [new Identifier { Id = "ADV-1", SourceId = "SELL-1234", SourceName = "TIP Seller", Version = "0" }],
+                Name = "Citizens for Smith",
+            },
+            Agency = new Company
+            {
+                Ids = [new Identifier { Id = "AGY-1", SourceId = "SELL-1234", SourceName = "TIP Seller", Version = "0" }],
+                Name = "Agency Partners",
+            },
+            AiringMediaOutlet = new MediaOutlet
+            {
+                MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "SELL-1234", SourceName = "TIP Seller", Version = "0" }],
+                MediaOutletName = "KHOU-TV",
+                MediaOutletType = "Local TV",
+            },
+            AdSeconds = 0,
+            TotalDollars = -1,
+            State = "TX",
+            RepFirm = new Company
+            {
+                Ids = [new Identifier { Id = "REP-1", SourceId = "SELL-1234", SourceName = "TIP Seller", Version = "0" }],
+                Name = "Station Group Sales",
+            },
+        };
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("FlightStart") && issue.Message.Contains("valid ISO date"));
+        issues.Should().Contain(issue => issue.Path.Contains("AdSeconds") && issue.Message.Contains("greater than zero"));
+        issues.Should().Contain(issue => issue.Path.Contains("TotalDollars") && issue.Message.Contains("greater than zero"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
