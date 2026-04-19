@@ -15,6 +15,11 @@ Implemented in this library today:
 - `POST /seller/orders`
 - `POST /buyer/inventoryAvails/subscription`
 - `POST /seller/inventoryAvails`
+- `POST /seller/invoices`
+- `POST /seller/makegood/guidelines`
+- `POST /buyer/makegood/guidelines`
+- `POST /seller/makegood/offers`
+- `POST /buyer/makegood/offers`
 
 ## Remaining endpoint families from `tip-initiative-apis` `develop`
 
@@ -22,18 +27,14 @@ Implemented in this library today:
 - `sellerAudiences`
 - `creativeAssets`
 - `impressionssub`
-- `invoice`
-- `makegoods`
 - `sellerPoliticalCompetitives`
 
 ## Recommended implementation order
 
-1. `invoice`
-2. `makegoods`
-3. `creativeAssets`
-4. `impressionssub`
-5. `buyerAudiences` and `sellerAudiences`
-6. `sellerPoliticalCompetitives`
+1. `creativeAssets`
+2. `impressionssub`
+3. `buyerAudiences` and `sellerAudiences`
+4. `sellerPoliticalCompetitives`
 
 ## Notes from the TIP implementation guides
 

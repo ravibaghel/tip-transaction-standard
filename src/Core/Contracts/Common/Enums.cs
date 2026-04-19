@@ -639,3 +639,69 @@ public enum DynamicDateOffsetType
     [XmlEnum("Year")]
     Year,
 }
+
+public enum InvoiceLineType
+{
+    [EnumMember(Value = "Spot")]
+    [XmlEnum("Spot")]
+    Spot,
+    [EnumMember(Value = "Audience")]
+    [XmlEnum("Audience")]
+    Audience,
+    [EnumMember(Value = "Flat Rate")]
+    [XmlEnum("FlatRate")]
+    FlatRate,
+}
+
+public enum BillableCostsType
+{
+    [EnumMember(Value = "Booked")]
+    [XmlEnum("Booked")]
+    Booked,
+    [EnumMember(Value = "Actuals")]
+    [XmlEnum("Actuals")]
+    Actuals,
+}
+
+public enum MakegoodType
+{
+    [EnumMember(Value = "Resolve preemption")]
+    [XmlEnum("ResolvePreemption")]
+    ResolvePreemption,
+    [EnumMember(Value = "Audience Underdelivery")]
+    [XmlEnum("AudienceUnderdelivery")]
+    AudienceUnderdelivery,
+}
+
+public enum SalesElementEquivalentType
+{
+    [EnumMember(Value = "Same Sales Element")]
+    [XmlEnum("SameSalesElement")]
+    SameSalesElement,
+    [EnumMember(Value = "Alternate Sales Element")]
+    [XmlEnum("AlternateSalesElement")]
+    AlternateSalesElement,
+}
+
+public enum MakegoodWindowType
+{
+    [EnumMember(Value = "Original Broadcast Week")]
+    [XmlEnum("OriginalBroadcastWeek")]
+    OriginalBroadcastWeek,
+    [EnumMember(Value = "Original Broadcast Month")]
+    [XmlEnum("OriginalBroadcastMonth")]
+    OriginalBroadcastMonth,
+    [EnumMember(Value = "Within Flight Dates")]
+    [XmlEnum("WithinFlightDates")]
+    WithinFlightDates,
+}
+
+public enum MakegoodAssumedConfirmType
+{
+    [EnumMember(Value = "Booked")]
+    [XmlEnum("Booked")]
+    Booked,
+    [EnumMember(Value = "Not Booked")]
+    [XmlEnum("NotBooked")]
+    NotBooked,
+}

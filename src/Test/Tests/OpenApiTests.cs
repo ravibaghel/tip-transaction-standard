@@ -87,4 +87,31 @@ public sealed class OpenApiTests
         seller.OperationId.Should().Be("SellerInventoryAvails");
         seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
     }
+
+    [Fact]
+    public void Invoice_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "invoice.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        var seller = document.Paths["/seller/invoices"].Operations[OperationType.Post];
+        seller.OperationId.Should().Be("SellerInvoices");
+        seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+    }
+
+    [Fact]
+    public void Makegoods_openapi_fixture_exposes_json_and_xml_request_bodies()
+    {
+        using var stream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "Fixtures", "makegoods.openapi.yaml"));
+        var document = new OpenApiStreamReader().Read(stream, out var diagnostic);
+
+        diagnostic.Errors.Should().BeEmpty();
+
+        document.Paths["/seller/makegood/guidelines"].Operations[OperationType.Post].OperationId.Should().Be("SellerMakegoodGuidelines");
+        document.Paths["/buyer/makegood/guidelines"].Operations[OperationType.Post].OperationId.Should().Be("BuyerMakegoodGuidelines");
+        document.Paths["/seller/makegood/offers"].Operations[OperationType.Post].OperationId.Should().Be("SellerMakegoodOffers");
+        document.Paths["/buyer/makegood/offers"].Operations[OperationType.Post].OperationId.Should().Be("BuyerMakegoodOffers");
+    }
 }

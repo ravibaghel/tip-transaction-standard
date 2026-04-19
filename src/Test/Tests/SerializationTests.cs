@@ -1,7 +1,9 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
+using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Makegoods;
 using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
@@ -275,5 +277,33 @@ public sealed class SerializationTests
         model.DateSubmitted.Should().Be("2021-05-06");
         model.SalesElements.Should().HaveCount(1);
         model.SalesElements.Single().SalesElementInventorys.Single().InventoryType.Should().Be("Commercial");
+    }
+
+    [Fact]
+    public void Seller_invoices_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerInvoicesNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerInvoicesRequest>(payload);
+
+        model.InvoiceDate.Should().Be("2021-08-25");
+        model.LineDetails.Should().HaveCount(1);
+        model.LineDetails.Single().Type.Should().Be(InvoiceLineType.Spot);
+    }
+
+    [Fact]
+    public void Makegood_fixtures_deserialize()
+    {
+        var sellerGuidelines = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerMakegoodGuidelinesNew.json"));
+        var buyerGuidelines = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerMakegoodGuidelinesNew.json"));
+        var sellerOffers = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerMakegoodOffersNew.json"));
+
+        var sellerGuidelinesModel = TipPayloadSerializer.DeserializeJson<SellerMakegoodGuidelinesRequest>(sellerGuidelines);
+        var buyerGuidelinesModel = TipPayloadSerializer.DeserializeJson<BuyerMakegoodGuidelinesRequest>(buyerGuidelines);
+        var sellerOffersModel = TipPayloadSerializer.DeserializeJson<SellerMakegoodOffersRequest>(sellerOffers);
+
+        sellerGuidelinesModel.MakegoodType.Should().Be(MakegoodType.ResolvePreemption);
+        buyerGuidelinesModel.MakegoodGuidelines.Single().SalesElementEquivalent.Should().Be(SalesElementEquivalentType.SameSalesElement);
+        sellerOffersModel.MakegoodDetails.Should().HaveCount(1);
     }
 }

@@ -1,0 +1,75 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: Makegoods
+paths:
+  /seller/makegood/guidelines:
+    post:
+      operationId: SellerMakegoodGuidelines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerMakegoodGuidelinesRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerMakegoodGuidelinesRequest"
+      responses:
+        "202":
+          description: Accepted
+  /buyer/makegood/guidelines:
+    post:
+      operationId: BuyerMakegoodGuidelines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerMakegoodGuidelinesRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerMakegoodGuidelinesRequest"
+      responses:
+        "200":
+          description: OK
+  /seller/makegood/offers:
+    post:
+      operationId: SellerMakegoodOffers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerMakegoodOffersRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerMakegoodOffersRequest"
+      responses:
+        "200":
+          description: OK
+  /buyer/makegood/offers:
+    post:
+      operationId: BuyerMakegoodOffers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerMakegoodOffersRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerMakegoodOffersRequest"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    SellerMakegoodGuidelinesRequest:
+      type: object
+    BuyerMakegoodGuidelinesRequest:
+      type: object
+    SellerMakegoodOffersRequest:
+      type: object
+    BuyerMakegoodOffersRequest:
+      type: object

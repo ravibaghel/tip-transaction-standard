@@ -2,11 +2,11 @@
 
 `Tip.TransactionStandard` is a contract-first .NET library for the Television Interface Practices Initiative (TIP) APIs, designed for NuGet consumption in both client and server applications.
 
-This rewrite aligns with the TIP OpenAPI definitions from [`tip-initiative/tip-initiative-apis`](https://github.com/tip-initiative/tip-initiative-apis), with the current implementation focused on the `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, and `inventoryAvails` workflows plus the shared common contracts they depend on.
+This rewrite aligns with the TIP OpenAPI definitions from [`tip-initiative/tip-initiative-apis`](https://github.com/tip-initiative/tip-initiative-apis), with the current implementation focused on the `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, `inventoryAvails`, `invoice`, and `makegoods` workflows plus the shared common contracts they depend on.
 
 ## What the package includes
 
-- Strongly typed TIP contracts for shared objects, `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, and `inventoryAvails`
+- Strongly typed TIP contracts for shared objects, `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, `inventoryAvails`, `invoice`, and `makegoods`
 - JSON serialization helpers for `application/json`
 - XML serialization helpers for `application/xml`
 - Recursive validation without throwing in property setters
@@ -36,11 +36,16 @@ Implemented now:
 - Seller `POST /seller/orders`
 - Buyer `POST /buyer/inventoryAvails/subscription`
 - Seller `POST /seller/inventoryAvails`
+- Seller `POST /seller/invoices`
+- Seller `POST /seller/makegood/guidelines`
+- Buyer `POST /buyer/makegood/guidelines`
+- Seller `POST /seller/makegood/offers`
+- Buyer `POST /buyer/makegood/offers`
 - Shared responses, validation, JSON/XML serializers, ASP.NET Core integration
 
 Planned next:
 
-- Additional TIP endpoint families beyond `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, and `inventoryAvails`
+- Additional TIP endpoint families beyond `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, `inventoryAvails`, `invoice`, and `makegoods`
 - More schema fixtures and response coverage
 - More package-level compatibility and integration tests
 
@@ -94,4 +99,4 @@ dotnet test src\Test\Test.csproj
 ## Reference
 
 - TIP API repository: [tip-initiative/tip-initiative-apis](https://github.com/tip-initiative/tip-initiative-apis)
-- TIP `v6.0.0` `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, and `inventoryAvails` examples and schemas were used as the baseline for the current contract rewrite
+- TIP `v6.0.0` `logtimes`, `commercialInstructions`, `rfps`, `proposals`, `orders`, `inventoryAvails`, `invoice`, and `makegoods` examples and schemas were used as the baseline for the current contract rewrite

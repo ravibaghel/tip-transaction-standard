@@ -1,0 +1,25 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.0.0",
+    "transactionId": {
+      "transactionId": "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+      "transactionType": "New",
+      "sourceId": "ABC-1234",
+      "sourceName": "TIPApi"
+    },
+    "timeStamp": "2021-07-21T17:32:28Z"
+  },
+  "dateSubmitted": "2021-05-20",
+  "buyer": {
+    "buyerIds": [
+      {
+        "id": "BUY-123",
+        "version": "0",
+        "srcId": "ABC-1234",
+        "srcName": "TIPApi"
+      }
+    ],
+    "buyerName": "Canvas Worldwide. LLC"
+  },
+  "makegoodType": "Resolve preemption"
+}

@@ -1,0 +1,67 @@
+{
+  "transactionHeader": {
+    "tipVersion": "6.0.0",
+    "transactionId": {
+      "transactionId": "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+      "transactionType": "New",
+      "sourceId": "ABC-1234",
+      "sourceName": "TIPApi"
+    },
+    "timeStamp": "2021-07-21T17:32:28Z"
+  },
+  "referenceIds": [
+    {
+      "referenceSourceName": "KHOU-TV",
+      "referenceSourceId": "ABC-1234",
+      "referenceType": "Order",
+      "referenceId": "REF-1234",
+      "referenceVersionId": 1,
+      "referenceName": "Hyundai 1Q22"
+    }
+  ],
+  "makegoodType": "Resolve preemption",
+  "makegoodDetails": [
+    {
+      "makegoodNum": 0,
+      "salesElement": {
+        "salesElementHeader": {
+          "mediaOutletId": "KHOU-TV",
+          "salesElementName": "Primetime",
+          "salesElementId": "SE-1234",
+          "salesElementType": "Time-specific"
+        },
+        "timePeriods": [
+          {
+            "dateWindow": {
+              "startDate": "2021-05-20",
+              "endDate": "2021-05-20"
+            },
+            "DOW": {
+              "isMonday": true,
+              "isTuesday": true,
+              "isWednesday": true,
+              "isThursday": true,
+              "isFriday": true,
+              "isSaturday": true,
+              "isSunday": true
+            }
+          }
+        ],
+        "salesElementTransactionInventorys": [
+          {
+            "lineNum": "string",
+            "inventoryType": "string",
+            "salesElementTransactionDates": [
+              {
+                "dateWindow": {
+                  "startDate": "2021-05-20",
+                  "endDate": "2021-05-20"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

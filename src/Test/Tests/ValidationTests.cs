@@ -1,7 +1,9 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
+using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Makegoods;
 using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
@@ -87,6 +89,32 @@ public sealed class ValidationTests
 
         issues.Should().Contain(issue => issue.Path.Contains("DateSubmitted") && issue.Message.Contains("valid ISO date"));
         issues.Should().Contain(issue => issue.Path.Contains("InventoryAvails") && issue.Message.Contains("zero or greater"));
+    }
+
+    [Fact]
+    public void Invalid_invoice_payload_reports_paths()
+    {
+        var request = CreateValidInvoiceRequest();
+        request.InvoiceDate = "bad-date";
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("InvoiceDate") && issue.Message.Contains("valid ISO date"));
+    }
+
+    [Fact]
+    public void Invalid_makegood_payload_reports_paths()
+    {
+        var request = new SellerMakegoodGuidelinesRequest
+        {
+            DateSubmitted = "bad-date",
+            Buyer = new Buyer { BuyerIds = [new Identifier { Id = "BUY-123", SourceId = "ABC-1234", SourceName = "TIPApi", Version = "0" }], BuyerName = "Canvas Worldwide. LLC" },
+            MakegoodType = MakegoodType.ResolvePreemption,
+        };
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("DateSubmitted") && issue.Message.Contains("valid ISO date"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
@@ -485,6 +513,89 @@ public sealed class ValidationTests
                             ],
                         },
                     ],
+                },
+            ],
+        };
+
+    private static SellerInvoicesRequest CreateValidInvoiceRequest() =>
+        new()
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-05-06T19:53:04.885Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    TransactionType = TransactionType.New,
+                    SourceId = "YSELL-1234",
+                    SourceName = "YSELL Seller",
+                },
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "YSELL Seller",
+                    ReferenceSourceId = "YSELL-1234",
+                    ReferenceType = ReferenceType.Invoice,
+                    Value = "ORD-5678-1",
+                },
+            ],
+            InvoiceDate = "2021-08-25",
+            DateWindow = new DateWindow
+            {
+                StartDate = "2021-07-01",
+                EndDate = "2021-07-31",
+            },
+            Buyer = new Buyer
+            {
+                BuyerIds = [new Identifier { Id = "YSELL-7890", SourceId = "YSELL-1234", SourceName = "YSELL Seller", Version = "0" }],
+                BuyerName = "Canvas Worldwide. LLC",
+            },
+            Advertiser = new Advertiser
+            {
+                AdvertiserIds = [new Identifier { Id = "YSELL-0980", SourceId = "YSELL-1234", SourceName = "YSELL Seller", Version = "0" }],
+                AdvertiserName = "Hyundai",
+            },
+            RevenueType = RevenueType.Cash,
+            GrossAmount = 10000m,
+            Commission = 8m,
+            NetAmount = 10845.55m,
+            RemittanceInfo = new RemittanceInfo
+            {
+                ReferenceSourceIds = [new Identifier { Id = "RMT-1234", SourceId = "XVEN-1234", SourceName = "XVEN Buyer", Version = "0" }],
+            },
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "XVEN-1234", SourceName = "XVEN Buyer", Version = "0" }],
+                    MediaOutletName = "KHOU-TV",
+                    MediaOutletType = "Local TV",
+                },
+            ],
+            LineDetails =
+            [
+                new InvoiceLineDetail
+                {
+                    LineNum = "1",
+                    Type = InvoiceLineType.Spot,
+                    Product = new Product
+                    {
+                        ProductIds = [new Identifier { Id = "PRO-1234", SourceId = "YSELL-1234", SourceName = "YSELL Seller", Version = "0" }],
+                        ProductName = "Automobile",
+                    },
+                    SalesElementHeader = new SalesElementHeader
+                    {
+                        MediaOutletId = "KHOU-TV",
+                        SalesElementId = "YSELL-9999",
+                        SalesElementName = "Primetime",
+                        SalesElementType = SalesElementType.TimeSpecific,
+                    },
+                    Length = 30,
+                    GrossCost = 150m,
+                    NetCost = 127.5m,
                 },
             ],
         };
