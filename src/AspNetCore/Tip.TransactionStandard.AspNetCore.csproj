@@ -7,7 +7,7 @@
     <PackageId>Tip.TransactionStandard.AspNetCore</PackageId>
     <Title>TIP Transaction Standard ASP.NET Core</Title>
     <Description>ASP.NET Core formatters and registration helpers for the TIP Transaction Standard package.</Description>
-    <PackageVersion>0.1.0</PackageVersion>
+    <PackageReleaseNotes>See CHANGELOG.md. 0.2.0 aligns the ASP.NET Core companion package with the expanded endpoint coverage in the core package.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,5 +18,6 @@
     <Compile Include="**\*.cs" Exclude="bin\**\*;obj\**\*" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <None Include="..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\CHANGELOG.md" Pack="true" PackagePath="\" Link="CHANGELOG.md" />
   </ItemGroup>
 </Project>

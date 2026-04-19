@@ -1,4 +1,5 @@
 <Project>
+  <Import Project="Version.props" />
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -10,9 +11,11 @@
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
     <RepositoryUrl>https://github.com/ravibaghel/tip-transaction-standard</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/tip-initiative/tip-initiative-apis</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ravibaghel/tip-transaction-standard</PackageProjectUrl>
     <PackageTags>TIP;OpenAPI;JSON;XML;Television;Advertising</PackageTags>
     <Authors>Ravi Baghel</Authors>
     <Company>Ravi Baghel</Company>

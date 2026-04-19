@@ -6,9 +6,8 @@
     <RootNamespace>Tip.TransactionStandard</RootNamespace>
     <PackageId>Tip.TransactionStandard</PackageId>
     <Title>TIP Transaction Standard for .NET</Title>
-    <Description>Contract-first TIP v6.0.0 models, validation, and JSON/XML serialization helpers for client and server development.</Description>
-    <PackageVersion>0.1.0</PackageVersion>
-    <PackageReleaseNotes>Initial contract-first rewrite focused on TIP logtimes and shared common contracts.</PackageReleaseNotes>
+    <Description>Contract-first TIP models, validation, and JSON/XML serialization helpers for client and server development.</Description>
+    <PackageReleaseNotes>See CHANGELOG.md. 0.2.0 expands coverage across the currently tracked TIP endpoint catalog and adds audiences and political competitive contracts.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,5 +19,6 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\CHANGELOG.md" Pack="true" PackagePath="\" Link="CHANGELOG.md" />
   </ItemGroup>
 </Project>

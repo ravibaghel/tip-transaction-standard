@@ -5,6 +5,10 @@
 - `Tip.TransactionStandard`
 - `Tip.TransactionStandard.AspNetCore`
 
+Current release candidate:
+
+- `0.2.0`
+
 ## JSON and XML
 
 The library treats JSON and XML as first-class wire formats:
