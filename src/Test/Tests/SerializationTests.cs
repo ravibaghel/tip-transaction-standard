@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.CreativeAssets;
+using Tip.TransactionStandard.Contracts.Impressions;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
@@ -320,6 +321,32 @@ public sealed class SerializationTests
         model.Formats.Single().Container.Should().Be("MP4");
         model.Guidelines.Should().HaveCount(1);
         xml.Should().Contain("<BuyerCreativeAssets");
+        xml.Should().Contain("https://tip.schemas.org/v6.0.0");
+    }
+
+    [Fact]
+    public void Buyer_impressions_subscription_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerImpressionsSubscriptionNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerImpressionsSubscriptionRequest>(payload);
+
+        model.Name.Should().Contain("Hourly Impression Subscription");
+        model.Frequency!.Every.Should().Be(FrequencyEvery.Hour);
+        model.StartDate!.Offset.Should().Be(-1);
+    }
+
+    [Fact]
+    public void Seller_impressions_notification_fixture_deserializes_and_xml_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerImpressionsNotificationNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerImpressionsNotificationRequest>(payload);
+        var xml = TipPayloadSerializer.SerializeXml(model);
+
+        model.FilePrefix.Should().Be("ORD-0009123");
+        model.Creatives.Single().Status.Should().Be(CreativeStatus.NotFinal);
+        xml.Should().Contain("<SellerImpressionsNotificationRequest");
         xml.Should().Contain("https://tip.schemas.org/v6.0.0");
     }
 }

@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Tip.TransactionStandard.Contracts.InventoryAvails;
+using Tip.TransactionStandard.Contracts.Common;
 
 namespace Tip.TransactionStandard.Serialization;
 

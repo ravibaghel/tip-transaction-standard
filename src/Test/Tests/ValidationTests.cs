@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.CreativeAssets;
+using Tip.TransactionStandard.Contracts.Impressions;
 using Tip.TransactionStandard.Contracts.InventoryAvails;
 using Tip.TransactionStandard.Contracts.Invoices;
 using Tip.TransactionStandard.Contracts.LogTimes;
@@ -164,6 +165,78 @@ public sealed class ValidationTests
         var issues = TipValidator.ValidateObject(request);
 
         issues.Should().Contain(issue => issue.Path.Contains("DeliveryDate") && issue.Message.Contains("valid ISO date"));
+    }
+
+    [Fact]
+    public void Invalid_impressions_payload_reports_paths()
+    {
+        var request = new SellerImpressionsNotificationRequest
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-07-21T17:32:28Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "1c237fdd-940d-499e-aa20-df3b9ce0908e",
+                    TransactionType = TransactionType.New,
+                    SourceId = "ABC-1234",
+                    SourceName = "TIPApi",
+                },
+            },
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "string", SourceId = "string", SourceName = "string", Version = "string" }],
+                    MediaOutletName = "MBLTV - My Best Local TV Station",
+                    MediaOutletType = "Local TV",
+                },
+            ],
+            SalesElementHeaders =
+            [
+                new SalesElementHeader
+                {
+                    MediaOutletId = "string",
+                    SalesElementName = "Primetime",
+                    SalesElementId = "string",
+                    SalesElementType = SalesElementType.TimeSpecific,
+                },
+            ],
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "KHOU-TV",
+                    ReferenceSourceId = "string",
+                    ReferenceType = ReferenceType.Rfp,
+                    Value = "REF-1234",
+                },
+            ],
+            Creatives =
+            [
+                new Creative
+                {
+                    Ids = [new Identifier { Id = "string", SourceId = "string", SourceName = "string", Version = "string" }],
+                    Name = "string",
+                    Status = CreativeStatus.NotFinal,
+                    Length = 0,
+                },
+            ],
+            ReportDate = new DateWindow
+            {
+                StartDate = "bad-date",
+                EndDate = "2021-07-14",
+            },
+            StatSource = "internal",
+            FilePrefix = "ORD-0009123",
+            Chunks = 0,
+        };
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("ReportDate.StartDate") && issue.Message.Contains("valid ISO date"));
+        issues.Should().Contain(issue => issue.Path.Contains("Chunks") && issue.Message.Contains("greater than zero"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>

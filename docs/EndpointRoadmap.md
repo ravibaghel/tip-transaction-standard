@@ -21,19 +21,19 @@ Implemented in this library today:
 - `POST /seller/makegood/offers`
 - `POST /buyer/makegood/offers`
 - `POST /buyer/creativeAssets`
+- `POST /buyer/impressions/subscription`
+- `POST /seller/impressions/notification`
 
 ## Remaining endpoint families from `tip-initiative-apis` `develop`
 
 - `buyerAudiences`
 - `sellerAudiences`
-- `impressionssub`
 - `sellerPoliticalCompetitives`
 
 ## Recommended implementation order
 
-1. `impressionssub`
-2. `buyerAudiences` and `sellerAudiences`
-3. `sellerPoliticalCompetitives`
+1. `buyerAudiences` and `sellerAudiences`
+2. `sellerPoliticalCompetitives`
 
 ## Notes from the TIP implementation guides
 

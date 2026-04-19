@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: TIP Impressions Subscription and Notification
+  version: 6.0.0
+paths:
+  /buyer/impressions/subscription:
+    post:
+      operationId: BuyerImpressionsSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BuyerImpressionsSubscription'
+                - $ref: '#/components/schemas/CancelConfirmRecallReject'
+          application/xml:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BuyerImpressionsSubscription'
+                - $ref: '#/components/schemas/CancelConfirmRecallReject'
+      responses:
+        '201':
+          description: Accepted
+  /seller/impressions/notification:
+    post:
+      operationId: SellerImpressionNotification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SellerImpressionsNotification'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SellerImpressionsNotification'
+      responses:
+        '200':
+          description: Accepted
+components:
+  schemas:
+    BuyerImpressionsSubscription:
+      type: object
+    SellerImpressionsNotification:
+      type: object
+    CancelConfirmRecallReject:
+      type: object
