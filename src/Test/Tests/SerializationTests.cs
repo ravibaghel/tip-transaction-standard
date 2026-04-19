@@ -212,4 +212,16 @@ public sealed class SerializationTests
         serialized.Should().Contain("https://tip.schemas.org/v6.0.0");
         serialized.Should().Contain("<revenueType>Cash</revenueType>");
     }
+
+    [Fact]
+    public void Buyer_proposals_json_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerProposalsChange.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerProposalsRequest>(payload);
+
+        model.TransactionHeader!.TransactionId!.TransactionType.Should().Be(TransactionType.Change);
+        model.ReferenceIds.Should().HaveCount(3);
+        model.ExternalComment.Should().Contain("negotiations");
+    }
 }

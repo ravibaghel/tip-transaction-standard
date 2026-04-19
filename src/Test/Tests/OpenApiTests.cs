@@ -48,5 +48,9 @@ public sealed class OpenApiTests
         var seller = document.Paths["/seller/proposals"].Operations[OperationType.Post];
         seller.OperationId.Should().Be("SellerProposals");
         seller.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
+
+        var buyer = document.Paths["/buyer/proposals"].Operations[OperationType.Post];
+        buyer.OperationId.Should().Be("BuyerProposals");
+        buyer.RequestBody.Content.Keys.Should().Contain(["application/json", "application/xml"]);
     }
 }

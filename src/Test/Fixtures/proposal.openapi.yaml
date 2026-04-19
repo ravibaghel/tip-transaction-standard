@@ -18,7 +18,24 @@ paths:
       responses:
         "201":
           description: Created
+  /buyer/proposals:
+    post:
+      operationId: BuyerProposals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerProposalsRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerProposalsRequest"
+      responses:
+        "201":
+          description: Created
 components:
   schemas:
     SellerProposalsRequest:
+      type: object
+    BuyerProposalsRequest:
       type: object
