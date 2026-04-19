@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Validation;
@@ -61,6 +62,17 @@ public sealed class ValidationTests
         issues.Should().Contain(issue => issue.Path.Contains("ExpirationDate") && issue.Message.Contains("valid ISO date"));
         issues.Should().Contain(issue => issue.Path.Contains("InventoryLength") && issue.Message.Contains("zero or greater"));
         issues.Should().Contain(issue => issue.Path.Contains("UnitCount") && issue.Message.Contains("zero or greater"));
+    }
+
+    [Fact]
+    public void Invalid_order_payload_reports_paths()
+    {
+        var request = CreateValidOrderRequest();
+        request.OrderBookedDate = "bad-date";
+
+        var issues = TipValidator.ValidateObject(request);
+
+        issues.Should().Contain(issue => issue.Path.Contains("OrderBookedDate") && issue.Message.Contains("valid ISO date"));
     }
 
     private static SellerLogtimesRequest CreateValidRequest() =>
@@ -330,6 +342,68 @@ public sealed class ValidationTests
                             ],
                         },
                     ],
+                },
+            ],
+        };
+
+    private static BuyerOrdersRequest CreateValidOrderRequest() =>
+        new()
+        {
+            TransactionHeader = new TransactionHeader
+            {
+                TipVersion = "6.0.0",
+                TimeStamp = "2021-07-21T17:32:28Z",
+                TransactionId = new TransactionIdentifier
+                {
+                    Id = "1C237FDD-940D-499E-AA20-DF3B9CE0908E",
+                    TransactionType = TransactionType.New,
+                    SourceId = "Buy-6789",
+                    SourceName = "TIP Buyer",
+                },
+            },
+            ReferenceIds =
+            [
+                new ReferenceId
+                {
+                    ReferenceSourceName = "Buy-6789",
+                    ReferenceSourceId = "TIP Buyer",
+                    ReferenceType = ReferenceType.Order,
+                    Value = "ORD-56789",
+                },
+            ],
+            OrderBookedDate = "2021-05-24",
+            Buyer = new Buyer
+            {
+                BuyerIds = [new Identifier { Id = "Buy-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                BuyerName = "Canvas Worldwide. LLC",
+            },
+            Commission = 10m,
+            Contacts =
+            [
+                new Contact
+                {
+                    ContactIds = [new Identifier { Id = "CNT-12345", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    Email = "user@example.com",
+                },
+            ],
+            RevenueType = RevenueType.Cash,
+            BusinessType = "Linear",
+            IsEquivalized = true,
+            DateWindows =
+            [
+                new DateWindow
+                {
+                    StartDate = "2021-07-01",
+                    EndDate = "2021-09-21",
+                },
+            ],
+            MediaOutlets =
+            [
+                new MediaOutlet
+                {
+                    MediaOutletIds = [new Identifier { Id = "KHOU-TV", SourceId = "KHOU-TV", SourceName = "KHOU-TV", Version = "0" }],
+                    MediaOutletName = "MBLTV - My Best Local TV Station",
+                    MediaOutletType = "Local TV",
                 },
             ],
         };

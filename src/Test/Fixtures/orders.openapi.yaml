@@ -1,0 +1,41 @@
+openapi: "3.0.0"
+info:
+  version: 6.0.0
+  title: Orders
+paths:
+  /buyer/orders:
+    post:
+      operationId: BuyerOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerOrdersRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/BuyerOrdersRequest"
+      responses:
+        "201":
+          description: Created
+  /seller/orders:
+    post:
+      operationId: SellerOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerOrdersRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/SellerOrdersRequest"
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    BuyerOrdersRequest:
+      type: object
+    SellerOrdersRequest:
+      type: object

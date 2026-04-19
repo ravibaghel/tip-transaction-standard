@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Tip.TransactionStandard.Contracts.Common;
 using Tip.TransactionStandard.Contracts.LogTimes;
+using Tip.TransactionStandard.Contracts.Orders;
 using Tip.TransactionStandard.Contracts.Proposals;
 using Tip.TransactionStandard.Contracts.Rfps;
 using Tip.TransactionStandard.Serialization;
@@ -223,5 +224,31 @@ public sealed class SerializationTests
         model.TransactionHeader!.TransactionId!.TransactionType.Should().Be(TransactionType.Change);
         model.ReferenceIds.Should().HaveCount(3);
         model.ExternalComment.Should().Contain("negotiations");
+    }
+
+    [Fact]
+    public void Buyer_orders_json_fixture_deserializes()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "BuyerOrdersNew.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<BuyerOrdersRequest>(payload);
+
+        model.TransactionHeader!.TransactionId!.TransactionType.Should().Be(TransactionType.New);
+        model.OrderBookedDate.Should().Be("2021-05-24");
+        model.ReferenceIds.Should().Contain(x => x.ReferenceType == ReferenceType.Order);
+    }
+
+    [Fact]
+    public void Seller_orders_json_fixture_deserializes_and_xml_roundtrips()
+    {
+        var payload = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "SellerOrdersConfirm.json"));
+
+        var model = TipPayloadSerializer.DeserializeJson<SellerOrdersRequest>(payload);
+        var xml = TipPayloadSerializer.SerializeXml(model);
+
+        model.TransactionHeader!.TransactionId!.TransactionType.Should().Be(TransactionType.Confirm);
+        model.Comments.Should().Be("Appreciate your business");
+        xml.Should().Contain("<SellerOrders");
+        xml.Should().Contain("https://tip.schemas.org/v6.0.0");
     }
 }
