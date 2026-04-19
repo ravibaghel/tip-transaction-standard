@@ -25,6 +25,13 @@ The project follows a practical pre-1.0 versioning model:
 - Docs and endpoint roadmap now track implementation status and remaining hardening work
 - Packaging guidance now includes versioning and release-note workflow
 
+## [0.2.1] - 2026-04-19
+
+### Changed
+
+- Republished the initial public-preview release with a clean package version after `0.2.0` did not become publicly visible on NuGet.org
+- Kept package contents aligned with the endpoint-complete `0.2.0` implementation baseline
+
 ## [0.1.0] - 2026-04-19
 
 ### Added

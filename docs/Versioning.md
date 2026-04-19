@@ -10,7 +10,7 @@ The packages use pre-1.0 semantic-style versioning:
 
 Current release line:
 
-- `0.2.0` is the first publish candidate for the full endpoint surface currently implemented in this repo
+- `0.2.1` is the current public-preview candidate for the full endpoint surface currently implemented in this repo
 
 ## Package version sources
 

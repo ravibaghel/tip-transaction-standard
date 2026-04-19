@@ -86,6 +86,11 @@ using Tip.TransactionStandard.Http;
 var content = TipHttpContent.CreateJson(request);
 ```
 
+## NuGet packages
+
+- `Baghel.Tip.TransactionStandard`
+- `Baghel.Tip.TransactionStandard.AspNetCore`
+
 ## Repository layout
 
 - [src/Core/Core.csproj](/C:/Users/ravib/source/repos/tip-transaction-standard/src/Core/Core.csproj)

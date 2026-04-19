@@ -2,8 +2,8 @@
 
 ## NuGet packages
 
-- `Tip.TransactionStandard`
-- `Tip.TransactionStandard.AspNetCore`
+- `Baghel.Tip.TransactionStandard`
+- `Baghel.Tip.TransactionStandard.AspNetCore`
 
 ## Pre-publish checklist
 
@@ -26,14 +26,14 @@ dotnet pack src\AspNetCore\Tip.TransactionStandard.AspNetCore.csproj -c Release 
 ## Publish example
 
 ```powershell
-dotnet nuget push .artifacts\packages\Tip.TransactionStandard.0.2.0.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
-dotnet nuget push .artifacts\packages\Tip.TransactionStandard.AspNetCore.0.2.0.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
+dotnet nuget push .artifacts\packages\Baghel.Tip.TransactionStandard.0.2.1.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
+dotnet nuget push .artifacts\packages\Baghel.Tip.TransactionStandard.AspNetCore.0.2.1.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
 ```
 
 ## Current publish recommendation
 
 Recommended now:
 
-- publish as `0.2.0`
+- publish as `0.2.1`
 - treat it as the first public preview with broad endpoint coverage
 - avoid `1.0.0` until response coverage and integration guidance are more mature

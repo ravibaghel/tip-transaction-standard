@@ -4,10 +4,10 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AssemblyName>Tip.TransactionStandard.AspNetCore</AssemblyName>
     <RootNamespace>Tip.TransactionStandard.AspNetCore</RootNamespace>
-    <PackageId>Tip.TransactionStandard.AspNetCore</PackageId>
+    <PackageId>Baghel.Tip.TransactionStandard.AspNetCore</PackageId>
     <Title>TIP Transaction Standard ASP.NET Core</Title>
     <Description>ASP.NET Core formatters and registration helpers for the TIP Transaction Standard package.</Description>
-    <PackageReleaseNotes>See CHANGELOG.md. 0.2.0 aligns the ASP.NET Core companion package with the expanded endpoint coverage in the core package.</PackageReleaseNotes>
+    <PackageReleaseNotes>See CHANGELOG.md. 0.2.1 republishes the ASP.NET Core companion package with a clean package version for NuGet visibility.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

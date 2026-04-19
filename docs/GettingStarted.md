@@ -4,10 +4,12 @@
 
 - `Tip.TransactionStandard`
 - `Tip.TransactionStandard.AspNetCore`
+- `Baghel.Tip.TransactionStandard`
+- `Baghel.Tip.TransactionStandard.AspNetCore`
 
 Current release candidate:
 
-- `0.2.0`
+- `0.2.1`
 
 ## JSON and XML
 

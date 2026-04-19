@@ -4,10 +4,10 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AssemblyName>Tip.TransactionStandard</AssemblyName>
     <RootNamespace>Tip.TransactionStandard</RootNamespace>
-    <PackageId>Tip.TransactionStandard</PackageId>
+    <PackageId>Baghel.Tip.TransactionStandard</PackageId>
     <Title>TIP Transaction Standard for .NET</Title>
     <Description>Contract-first TIP models, validation, and JSON/XML serialization helpers for client and server development.</Description>
-    <PackageReleaseNotes>See CHANGELOG.md. 0.2.0 expands coverage across the currently tracked TIP endpoint catalog and adds audiences and political competitive contracts.</PackageReleaseNotes>
+    <PackageReleaseNotes>See CHANGELOG.md. 0.2.1 republishes the endpoint-complete public preview with a clean package version for NuGet visibility.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
