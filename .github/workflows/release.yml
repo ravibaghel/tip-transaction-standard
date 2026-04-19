@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore src/TIPSolution.sln
+
+      - name: Build
+        run: dotnet build src/TIPSolution.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test src/Test/Test.csproj -c Release --no-build --verbosity normal
+
+      - name: Pack Core
+        run: dotnet pack src/Core/Core.csproj -c Release --no-build -o ${{ github.workspace }}/.artifacts/packages
+
+      - name: Pack AspNetCore
+        run: dotnet pack src/AspNetCore/Tip.TransactionStandard.AspNetCore.csproj -c Release --no-build -o ${{ github.workspace }}/.artifacts/packages
+
+      - name: Publish to NuGet
+        run: dotnet nuget push "${{ github.workspace }}/.artifacts/packages/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "${{ secrets.NUGET_API_KEY }}" --skip-duplicate
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: .artifacts/packages/*.nupkg
+          generate_release_notes: true

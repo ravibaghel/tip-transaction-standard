@@ -91,6 +91,20 @@ var content = TipHttpContent.CreateJson(request);
 - `Baghel.Tip.TransactionStandard`
 - `Baghel.Tip.TransactionStandard.AspNetCore`
 
+## Release automation
+
+The repository now includes GitHub Actions for:
+
+- CI on pushes and pull requests
+- tag-based NuGet publishing and GitHub Release creation
+
+For future releases:
+
+1. update `Version.props`
+2. update `CHANGELOG.md`
+3. commit and push
+4. create and push a tag such as `v0.2.2`
+
 ## Repository layout
 
 - [src/Core/Core.csproj](/C:/Users/ravib/source/repos/tip-transaction-standard/src/Core/Core.csproj)
