@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Tip.TransactionStandard.Contracts.Common;
 
-[XmlRoot("AcceptedResponse")]
+[XmlRoot("AcceptedResponse", Namespace = TipXml.Namespace)]
 public sealed class AcceptedResponse
 {
     [Required]
@@ -18,7 +18,7 @@ public sealed class AcceptedResponse
     public string? TimeStamp { get; set; }
 }
 
-[XmlRoot("Error")]
+[XmlRoot("Error", Namespace = TipXml.Namespace)]
 public sealed class ErrorResponse
 {
     [Required]

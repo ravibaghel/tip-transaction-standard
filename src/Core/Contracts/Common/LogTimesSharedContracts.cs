@@ -60,7 +60,7 @@ public sealed class TipDateTime : ITipValidatable
 
     public IEnumerable<TipValidationIssue> Validate(string path)
     {
-        if (!string.IsNullOrWhiteSpace(BroadcastDate) && !DateOnly.TryParse(BroadcastDate, out _))
+        if (!string.IsNullOrWhiteSpace(BroadcastDate) && !IsDateLike(BroadcastDate))
         {
             yield return new TipValidationIssue(path.Append(nameof(BroadcastDate)), "broadcastDate must be a valid ISO date.");
         }
@@ -70,6 +70,10 @@ public sealed class TipDateTime : ITipValidatable
             yield return new TipValidationIssue(path.Append(nameof(CalendarDateTime)), "calendarDateTime must be a valid ISO date-time.");
         }
     }
+
+    internal static bool IsDateLike(string? value) =>
+        !string.IsNullOrWhiteSpace(value)
+        && (DateOnly.TryParse(value, out _) || DateTimeOffset.TryParse(value, out _));
 }
 
 public sealed class DateWindow : ITipValidatable
@@ -86,12 +90,12 @@ public sealed class DateWindow : ITipValidatable
 
     public IEnumerable<TipValidationIssue> Validate(string path)
     {
-        if (!string.IsNullOrWhiteSpace(StartDate) && !DateOnly.TryParse(StartDate, out _))
+        if (!string.IsNullOrWhiteSpace(StartDate) && !TipDateTime.IsDateLike(StartDate))
         {
             yield return new TipValidationIssue(path.Append(nameof(StartDate)), "startDate must be a valid ISO date.");
         }
 
-        if (!string.IsNullOrWhiteSpace(EndDate) && !DateOnly.TryParse(EndDate, out _))
+        if (!string.IsNullOrWhiteSpace(EndDate) && !TipDateTime.IsDateLike(EndDate))
         {
             yield return new TipValidationIssue(path.Append(nameof(EndDate)), "endDate must be a valid ISO date.");
         }
@@ -182,4 +186,8 @@ public sealed class LinkType
     [JsonPropertyName("linkNum")]
     [XmlElement("linkNum")]
     public int? LinkNumber { get; set; }
+
+    [JsonPropertyName("linkSeq")]
+    [XmlElement("linkSeq")]
+    public int? LinkSequence { get; set; }
 }

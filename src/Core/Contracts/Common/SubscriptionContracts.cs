@@ -66,7 +66,7 @@ public sealed class Contact : ITipValidatable
 
     public IEnumerable<TipValidationIssue> Validate(string path)
     {
-        if (!string.IsNullOrWhiteSpace(EffectiveDate) && !DateOnly.TryParse(EffectiveDate, out _))
+        if (!string.IsNullOrWhiteSpace(EffectiveDate) && !TipDateTime.IsDateLike(EffectiveDate))
         {
             yield return new TipValidationIssue(path.Append(nameof(EffectiveDate)), "effectiveDate must be a valid ISO date.");
         }
@@ -110,7 +110,7 @@ public sealed class Frequency : ITipValidatable
             yield return new TipValidationIssue(path.Append(nameof(EffectiveOn)), "effectiveOn must be a valid ISO date or date-time.");
         }
 
-        if (!string.IsNullOrWhiteSpace(EndOn) && !DateOnly.TryParse(EndOn, out _))
+        if (!string.IsNullOrWhiteSpace(EndOn) && !TipDateTime.IsDateLike(EndOn))
         {
             yield return new TipValidationIssue(path.Append(nameof(EndOn)), "endOn must be a valid ISO date.");
         }

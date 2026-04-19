@@ -6,7 +6,7 @@ using Tip.TransactionStandard.Validation;
 
 namespace Tip.TransactionStandard.Contracts.LogTimes;
 
-[XmlRoot("SellerLogtimesRequest")]
+[XmlRoot("SellerLogtimesRequest", Namespace = TipXml.Namespace)]
 public sealed class SellerLogtimesRequest
 {
     [Required]
@@ -29,7 +29,7 @@ public sealed class SellerLogtimesRequest
     public List<LogTimeUnit> Units { get; set; } = [];
 }
 
-[XmlRoot("BuyerLogTimesSubscriptionRequest")]
+[XmlRoot("BuyerLogTimesSubscriptionRequest", Namespace = TipXml.Namespace)]
 public sealed class BuyerLogTimesSubscriptionRequest
 {
     [Required]

@@ -43,8 +43,11 @@ Source: [official .NET support policy](https://dotnet.microsoft.com/platform/sup
 Included:
 
 - shared common TIP contracts needed by `logtimes`
+- shared common TIP contracts needed by `commercialInstructions`
 - seller logtimes request contract
 - buyer logtimes subscription request contract
+- buyer commercial instructions request contract
+- seller commercial instructions request contract
 - accepted response and error response contracts
 - JSON/XML serialization helpers
 - validation rules for required fields and selected conditional requirements

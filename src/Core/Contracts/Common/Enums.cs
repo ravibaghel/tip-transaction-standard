@@ -191,3 +191,29 @@ public enum ContactType
     [XmlEnum("Delivery Service")]
     DeliveryService,
 }
+
+public enum CommercialInstructionType
+{
+    [EnumMember(Value = "Rotation Share")]
+    [XmlEnum("RotationShare")]
+    RotationShare,
+    [EnumMember(Value = "Pattern")]
+    [XmlEnum("Pattern")]
+    Pattern,
+    [EnumMember(Value = "Unit Specific")]
+    [XmlEnum("UnitSpecific")]
+    UnitSpecific,
+}
+
+public enum InstructionActionType
+{
+    [EnumMember(Value = "New")]
+    [XmlEnum("New")]
+    New,
+    [EnumMember(Value = "Change")]
+    [XmlEnum("Change")]
+    Change,
+    [EnumMember(Value = "Cancel")]
+    [XmlEnum("Cancel")]
+    Cancel,
+}
